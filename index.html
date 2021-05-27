@@ -23,7 +23,7 @@
 <body>
   
   
-    <a-scene physics="iterations: 40">
+    <a-scene physics>
       <a-assets>
    <a-asset-item id="cart" src="https://cdn.glitch.com/2310c112-05bb-4c57-aaf0-639f68b0123a%2Fcartr.glb?v=1621762093412"></a-asset-item>
   </a-assets>  
@@ -31,11 +31,12 @@
     <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
       <!--- superhands---------------------------------------->
       <a-entity 
- progressive-controls ="objects: .grabbable,product"
+ progressive-controls ="objects: .Items,.notItems"
        ></a-entity>
       <!----------------------------------------------------------------------->
       
-      <a-camera id="cam" >   </a-camera>
+      <a-camera id="cam" >      <a-entity cursor="rayOrigin: mouse;"></a-entity>
+         </a-camera>
       
    <a-sky></a-sky>
       
@@ -49,18 +50,18 @@
          
       <!-- grabbable correct. product -->
       
-          <a-box   id = "correct"  dynamic-body   grabbable  class="grabbable"   color="blue"  position="0.23  0.2 -0.5"   product   scale="0.1 0.1 0.1" >  </a-box>
+          <a-box   id = "correct"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.23  0.2 -0.5"      scale="0.1 0.1 0.1" >  </a-box>
       <!-- grabbable wrong. product -->
-           <a-box   id = "wrong"  dynamic-body   grabbable  class="grabbable"   color="red"  position="0 0.2 0.5"   product   scale="0.1 0.1 0.1" > </a-box>
+           <a-box   id = "wrong"  dynamic-body   grabbable  class="notItems"   color="red"  position="0 0.2 0.5"      scale="0.1 0.1 0.1" > </a-box>
      
      <a-box id="checker" product-checker position = "0 1.2 -4"></a-box>
     
            
-     <a-gltf-model id="trolly"   scale = "2 2 2"   src="#cart" position="0.2 0.25 0.4" rotation = "0 90 0"  static-body  > 
+     <a-gltf-model id="trolly"   scale = "2 2 2" product  src="#cart" position="0.2 0.25 0.4" rotation = "0 90 0"   > 
      
-      <a-box id="collider"  position="0.02805 -0.065 0.25914" rotation="-90 0 0" scale="0.33 0.15 0.16" aabb-collider="objects: .grabbable" static-body material="opacity:0.2;" >
+      <a-box id="collider"  position="0.02805 -0.065 0.25914" rotation="-90 0 0" scale="0.33 0.15 0.16" aabb-collider="objects: .Items,.notItems"  material="opacity:0.2;" >
       </a-box>
-<!-- <a-box position="0.03659 -0.05 0.25925" rotation="-90 0 0" scale="0.4459 0.19007 0.06356"  aabb-collider="objects: .grabbable"  static-body visible="false" >
+ <!--<a-box position="0.03659 -0.05 0.25925" rotation="-90 0 0" scale="0.4459 0.19007 0.06356"  aabb-collider="objects: .Items,.notItems"  static-body visible="false" >
        </a-box>
     <a-box position="0.07132 0.04479 0.35891" rotation="" scale="0.38491 0.19726 0.06967" visible="false" >  </a-box><a-box position="0.07132 0.04479 0.14911" rotation="" scale="0.38491 0.19007 0.10514" static-body visible="false">  </a-box>
 <a-box position="-0.12008 0.0407 0.24246" rotation="0 90 0" scale="0.2483 0.29821 0.07078" static-body visible="false">  </a-box>

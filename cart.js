@@ -9,31 +9,47 @@ AFRAME.registerComponent('product', {
    let data = this.data;
     let checker = document.getElementById('checker')
    let product;
-   el.addEventListener("hitstart", e => 
-    {   
-      console.log(e.target.id+"collided ",);
-    product=document.getElementById(e.target.id)
-    product.setAttribute('dynamic-body','enabled:false');
-    product.className = "new";
+   document.getElementById("trolly").addEventListener("mousedown",()=>{
+var cartPos=el.object3D.position;  
+var cartRot=document.querySelector('a-camera').object3D.position
+   console.log("pressed"+cartPos.z); 
+   cartPos.z--;
+   //el.setAttribute('rotation',"0 0 0");
+   //el.setAttribute('rotation',cartRot);
+ //
 
-//document.getElementById("trolly").appendChild(product);
-product.setAttribute('position',el.getAttirbute('position'));
+el.setAttribute('animation',"property:position; to:"+cartPos.x+""+cartPos.y+""+cartPos.z+"duration:200");
+   })
+   el.firstElementChild.addEventListener("hitstart", e => 
+    {   
+      console.log(e.target.id,
+        "collided ",
+     e.target.components["aabb-collider"]["intersectedEls"].map(x => x.id)[0]
+      );
+    product=document.getElementById(e.target.components["aabb-collider"]["intersectedEls"].map(x => x.id)[0]
+    )
+    if(product.className=="Items"||product.className=="notItems")
+    setTimeout(() => {
+    product.removeAttribute('dynamic-body');
+
+      }, 10);
+    if(product.className=="Items")
+    product.className = "newItems";
+    else
+    product.className = "notNewItems";
+
+
+//product.setAttribute('position',document.getElementById("trolly").getAttirbute('position'));
 
 //el.parentElement.appendChild(document.getElementById(e.target.id))
-    if(e.target.id =="correct"){
-      checker.emit('correct');
-          
-    }else{
-        
-      checker.emit('wrong');
-    }
-{
-          
-
+    if(product.className !="newItems"){
+             checker.emit('wrong');
    
-         
-      
-         }}
+    }else{
+            checker.emit('correct');
+  
+    }
+}
 
  );
     
