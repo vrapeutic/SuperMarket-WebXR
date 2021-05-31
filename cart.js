@@ -5,6 +5,7 @@ AFRAME.registerComponent('product', {
 
   init: function () {
    
+
    let el = this.el;
    let product;
    el.firstElementChild.addEventListener('correct',()=>{
@@ -28,7 +29,7 @@ AFRAME.registerComponent('product', {
    setTimeout(() => {
      wrongLight.parentElement.removeChild(wrongLight);
    }, 2000);   })
-   document.getElementById("trolly").addEventListener("mousedown",()=>{
+   document.getElementById("trolly").addEventListener("click",()=>{
 //var cartPos=el.object3D.position;  
 var cartRot=document.querySelector('a-camera').object3D.rotation
    console.log("pressed"+cartRot.x); 
