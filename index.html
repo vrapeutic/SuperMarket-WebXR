@@ -30,13 +30,33 @@
 <body>
   
   
-    <a-scene stats physics>
-      <a-assets>
+    <a-scene stats physics effects="bloom, fxaa, ssao, godrays" bloom="radius: 0.66" fxaa  godrays="src: #sun; threshold: 0. 0.33; intensity: 2;tint:#FF0000" ssao="intensity:10;scale:.2;maxDepth:10;samples:64;radius:1;depthCutoff:100;blurRadius:10"  renderer="antialias: true;
+    sortObjects: true;
+    maxCanvasWidth: 1920;
+    maxCanvasHeight: 1920;
+    colorManagement: true;">
+    
+      <a-assets timeout="500000">        
         
         <a-asset-item id = "butterfly" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FButterfly.glb?v=1607868452056"></a-asset-item>
 
-   <a-asset-item id="cart" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSupermarket_cart_v1.01.glb?v=1622564924159"></a-asset-item>
-   <a-asset-item id="environment" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSupermarket_environment_v2.5.glb?v=1622650621230"></a-asset-item>
+   <a-asset-item id="cart" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSupermarket_cart_v1.02.glb?v=1622666432608"></a-asset-item>
+   <a-asset-item id="environment" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSupermarket_environment_v2.6.glb?v=1622982150956"></a-asset-item>
+   <a-asset-item id="arrow" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FArrow01_v1.01.glb?v=1622997246019"></a-asset-item>
+   <a-asset-item id="bread" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_BreadPackage_v1.01.glb?v=1622983192475"></a-asset-item>
+   <a-asset-item id="pizza" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_pizza_cheese_v1.01.glb?v=1622983124706"></a-asset-item>
+   <a-asset-item id="ice" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_icecream_v1.01.glb?v=1622983125714"></a-asset-item>
+   <a-asset-item id="cereals" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cereals_v1.01.glb?v=1622983126227"></a-asset-item>
+   <a-asset-item id="cheese" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cheese_v1.01.glb?v=1622983128838"></a-asset-item>
+   <a-asset-item id="biscuits" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_biscuits_v1.01.glb?v=1622983128965"></a-asset-item>
+   <a-asset-item id="meat" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_meat_raw_v1.01.glb?v=1622983129306"></a-asset-item>
+   <a-asset-item id="orange" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_juice_orange_v1.01.glb?v=1622983129585"></a-asset-item>
+   <a-asset-item id="apple" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_juice_apple_v1.01.glb?v=1622983130458"></a-asset-item>
+   <a-asset-item id="fish" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_fish_v1.01.glb?v=1622983130539"></a-asset-item>
+   <a-asset-item id="butter" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_butter_v1.01.glb?v=1622983130635"></a-asset-item>
+   <a-asset-item id="milk" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_milk_v1.01.glb?v=1622983131097"></a-asset-item>
+   <a-asset-item id="egg" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_EggBox_v1.01.glb?v=1622983191807s"></a-asset-item>
+   <a-asset-item id="bread2" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_BreadPackage_v1.01.glb?v=1622983192475"></a-asset-item>
 
   </a-assets>  
   <a-box class="draggable" scale="0.2 0.2 0.2" ></a-box>
@@ -67,45 +87,48 @@
      
          
       <!-- grabbable correct. product -->
-      <a-box   id = "correct1"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.4  0.2 -0.5"  product-collector    scale="0.1 0.1 0.1" >  </a-box>
+      <a-box   id = "correct1"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.4  1 1"  product-collector    scale="0.1 0.1 0.1" >  </a-box>
 
-          <a-box   id = "correct"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.23  0.2 -0.5" product-collector     scale="0.1 0.1 0.1" >  </a-box>
+          <a-box   id = "correct"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.23  1 1" product-collector     scale="0.1 0.1 0.1" >  </a-box>
       <!-- grabbable wrong. product -->
-           <a-box   id = "wrong"  dynamic-body   grabbable  class="notItems"   color="red"  position="1 1 1"  product-collector    scale="0.1 0.1 0.1" > </a-box>
-           <a-box   id = "wrong1"  dynamic-body   grabbable  class="notItems"   color="red"  position="0.2 0.2 0.5"   product-collector   scale="0.1 0.1 0.1" > </a-box>
+           <a-box   id = "wrong"  dynamic-body   grabbable  class="notItems"   color="red"  position="1 1 1"  product-collector    scale="0.1 0.1 0.1" ></a-box> </a-box>
+           <a-entity gltf-model="#butter"   id = "wrong1"  dynamic-body     class="notItems"   color="red" visible="true" depth="0.4" width = "0.4" height = "0.4" position="-3.00254 1 1.48"  product-collector   > </a-entity>
 
-    
+         <a-gltf-model id="arrows"  scale="0.5 0.5 0.5"   animation-mixer  src="#arrow" position="0.2 2.5 -2" rotation = "90 -180 0"   > 
+      </a-gltf-model>
            
-     <a-gltf-model id="trolly"    product  src="#cart" position="0.2 0.25 0.4" rotation = "0 90 0"   > 
-     
-      <a-box id="collider"  position="0.02805 0.052 0.25914" rotation="-90 0 0" scale="0.2 0.15 0.16" aabb-collider="objects: .Items,.notItems"  material="opacity:0.2;" >
-      </a-box>
- <!--<a-box position="0.03659 -0.05 0.25925" rotation="-90 0 0" scale="0.4459 0.19007 0.06356"  aabb-collider="objects: .Items,.notItems"  static-body visible="false" >
+     <a-gltf-model id="trolly"    product  src="#cart" position="0.2 0.10 -2" rotation = "0 -180 0"   > 
+ 
+      <a-box id="collider" position="0.02805 0.53 0.150" rotation="-90 0 0" scale="0.61 -0.9 0.07" aabb-collider="objects: .Items,.notItems" material="opacity: 0.2" geometry="">
+      </a-box>      
+ <!--                       
+<a-box position="0.03659 -0.05 0.25925" rotation="-90 0 0" scale="0.4459 0.19007 0.06356"  aabb-collider="objects: .Items,.notItems"  static-body visible="false" >
        </a-box>
     <a-box position="0.07132 0.04479 0.35891" rotation="" scale="0.38491 0.19726 0.06967" visible="false" >  </a-box><a-box position="0.07132 0.04479 0.14911" rotation="" scale="0.38491 0.19007 0.10514" static-body visible="false">  </a-box>
 <a-box position="-0.12008 0.0407 0.24246" rotation="0 90 0" scale="0.2483 0.29821 0.07078" static-body visible="false">  </a-box>
 <a-box position="0.25678 0.0407 0.24246" rotation="0 90 0" scale="0.231 0.29821 0.03932" static-body visible="false">  </a-box>-->
       </a-gltf-model> 
-      
- <a-gltf-model src="#environment"   position="0 0 0"  static-body ></a-gltf-model>
-     
+      <a-plane   position="0 0 0" rotation="-90 0 0" material="opacity: 0.1" width="4" height="4" color="#7BC8A4" static-body scale ="10 10 10"></a-plane>
+
+     <a-gltf-model src="#environment"  position="0 0.005 0"    ></a-gltf-model>
+
+                       <a-gltf-model src="#bread2"  position="0.2 1 -2" animation-mixer   ></a-gltf-model>
+
     <!----------butterfly target path-->
-    <a-box id="box" position="-3.08328 0.1 -3.41235"  visible="true" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  aabb-collider="objects:a-cylinder, a-sphere,a-box" class="clickable" blink-teleportation="pos: 0 0.5 -1; hide: true"
-            
-    ></a-box>   
-      <a-box id="box1" position="0.55281 0.1 1.48203" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable"blink-teleportation="pos: -1 0.5 -1; hide: true"
+    <a-box id="box" grabbable  dynamic-body position="-3.08328 0.1 -3.41235"  visible="true" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  aabb-collider="objects:a-cylinder, a-sphere,a-box" class="clickable" blink-teleportation="pos: 0 0.5 -1; hide: true " ></a-box>   
+      <a-box id="box1" grabbable dynamic-body position="0.55281 0.1 1.48203" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable"blink-teleportation="pos: -1 0.5 -1; hide: true"
     
     ></a-box> 
- <a-box id="box2" position="0.56386 0.1 -3.66149" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box"  class="clickable" blink-teleportation="pos: -2 0.5 -1; hide: true"
+ <a-box id="box2" grabbable dynamic-body position="0.56386 0.1 -3.66149" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box"  class="clickable" blink-teleportation="pos: -2 0.5 -1; hide: true"
     
     ></a-box> 
-  <a-box id="box3" position="-1 0.1 3.73918" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: 2 0.5 -1; hide: true"
+  <a-box id="box3"  dynamic-body position="-1 0.1 3.73918" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: 2 0.5 -1; hide: true"
     
     ></a-box>  
- <a-box id="box4" position="-3.00254 0.1 1.15781" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: 1 0.5 -1; hide: true"
+ <a-box id="box4"  dynamic-body position="-3.00254 0.1 1.15781" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: 1 0.5 -1; hide: true"
     
     ></a-box>  
-    <a-gltf-model id="butterflymodel"  moverandomly src="#butterfly" position = "0 0 -1" scale="5 5 5" animation-mixer  ></a-gltf-model>
+    <a-gltf-model id="butterflymodel"  moverandomly src="#butterfly" position = "0 1 -1" scale="5 5 5" animation-mixer  ></a-gltf-model>
 
   </a-scene>
   

@@ -49,7 +49,13 @@ var cartRot=document.querySelector('a-camera').object3D.rotation
          // player.setAttribute("position", pos); 
            pos.z--;
 el.setAttribute('animation',"property:position; to:"+pos.x+""+pos.y+""+pos.z+"delay:5000 ;dur:8000");
-   })
+   el.setAttribute('animation-mixer',"clampWhenFinished:  true;  loop:  false;  repetitions:  0");
+  //el.firstElementChild.object3D.posittion.z--;
+ setTimeout(() => {
+      el.removeAttribute('animation-mixer');
+
+  }, 1000);
+  })
    el.firstElementChild.addEventListener("hitstart", e => 
     {   
       console.log(e.target.id,
