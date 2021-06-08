@@ -28,13 +28,13 @@ setTimeout(() => {
     el.parentNode.replaceChild(new_element,el);
    // el.setAttribute("position",el.getAttribute('position'));
     console.log(window.z+""+el.object3D.position.z);
-
+window.x=new_element.object3D.position.x;
 //window.x=(el.object3D.position.x- document.getElementById('trolly').getAttribute("position").x)-1;
 //window.z=el.object3D.position.z+ document.getElementById('trolly').getAttribute("position").z;
  //window.y=el.object3D.position.y- document.getElementById('trolly').getAttribute("position").y;
  console.log(window.z+""+el.object3D.position.z);
+
  document.getElementById('trolly').firstElementChild.appendChild(new_element); 
- //  new_element.setAttribute("position",{x:window.x,y:window.y,z:window.z});
 
     }, 2000);
   })
@@ -44,7 +44,7 @@ setTimeout(() => {
 
      console.log('wrong product'+el);
    window.wrongProducts++;
-  window.x+=0.1;
+ // window.x+=0.1;
 
    //document.getElementById('trolly').appendChild(wrongProduct[wrongProduct[0]]); 
    setTimeout(() => {

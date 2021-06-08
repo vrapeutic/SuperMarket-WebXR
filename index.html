@@ -8,22 +8,23 @@
 
          <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
                  <script src="https://unpkg.com/aframe-area-light-component/dist/aframe-area-light-component.min.js"></script>
+  <script src="teleport.js"></script>
 
      
          <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>       
-       <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
        <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
        <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
        <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
-         
+       <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+
          <script
            src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script>
          <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
          <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="cart.js"></script>
+ <script src="cart.js"></script>
   <script src="product-trigger.js"></script>
   <script src="distaractor.js"></script>
 </head>
@@ -68,10 +69,9 @@
        ></a-entity>
       <!----------------------------------------------------------------------->
       <a-entity id="camRig" position="0 0 5">
-      <a-camera id="cam" >      <a-sphere id="fade" visible="false" position="0 0 -1.5" rotation="0 0 0" scale="3 2 1"  color="black"
-        >    
-        </a-sphere>        <a-entity cursor="rayOrigin: mouse"raycaster="objects: #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
-         </a-camera>
+      <a-camera id="cam"   >           <a-entity id="my-cursor" cursor="rayOrigin: mouse"raycaster="objects: #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
+        
+      </a-camera>
          <a-entity hand-controls="hand: left" grab  class = "hand"></a-entity>
          <a-entity hand-controls="hand: right" grab class = "hand"></a-entity>
             </a-entity>
@@ -92,15 +92,14 @@
           <a-box   id = "correct"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.23  1 1" product-collector     scale="0.1 0.1 0.1" >  </a-box>
       <!-- grabbable wrong. product -->
            <a-box   id = "wrong"  dynamic-body   grabbable  class="notItems"   color="red"  position="1 1 1"  product-collector    scale="0.1 0.1 0.1" ></a-box> </a-box>
-           <a-entity gltf-model="#butter"   id = "wrong1"  dynamic-body     class="notItems"   color="red" visible="true" depth="0.4" width = "0.4" height = "0.4" position="-3.00254 1 1.48"  product-collector   > </a-entity>
+           <a-entity gltf-model="#butter"  grabbable  id = "wrong1"  dynamic-body     class="notItems"   color="red" visible="true"  position="-3.00254 1 1.48"  product-collector   > </a-entity>
 
          <a-gltf-model id="arrows"  scale="0.5 0.5 0.5"   animation-mixer  src="#arrow" position="0.2 2.5 -2" rotation = "90 -180 0"   > 
       </a-gltf-model>
            
-     <a-gltf-model id="trolly"    product  src="#cart" position="0.2 0.10 -2" rotation = "0 -180 0"   > 
+     <a-gltf-model id="trolly"    product  src="#cart" position="0.2 0.10 -2" rotation = "0 -180 0" aabb-collider="objects: .Items,.notItems"  > 
  
-      <a-box id="collider" position="0.02805 0.53 0.150" rotation="-90 0 0" scale="0.61 -0.9 0.07" aabb-collider="objects: .Items,.notItems" material="opacity: 0.2" geometry="">
-      </a-box>      
+      <a-box id="collider"  positio="0 1 0 "  aabb-collider="objects: .Items,.notItems" material="opacity: 0.2" geometry="">
  <!--                       
 <a-box position="0.03659 -0.05 0.25925" rotation="-90 0 0" scale="0.4459 0.19007 0.06356"  aabb-collider="objects: .Items,.notItems"  static-body visible="false" >
        </a-box>
@@ -115,17 +114,17 @@
                        <a-gltf-model src="#bread2"  position="0.2 1 -2" animation-mixer   ></a-gltf-model>
 
     <!----------butterfly target path-->
-    <a-box id="box" grabbable  dynamic-body position="-3.08328 0.1 -3.41235"  visible="true" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  aabb-collider="objects:a-cylinder, a-sphere,a-box" class="clickable" blink-teleportation="pos: 0 0.5 -1; hide: true " ></a-box>   
-      <a-box id="box1" grabbable dynamic-body position="0.55281 0.1 1.48203" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable"blink-teleportation="pos: -1 0.5 -1; hide: true"
+    <a-box id="box"  position="-3.08328 0.1 -3.41235"  visible="true" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  aabb-collider="objects:a-cylinder, a-sphere,a-box" class="clickable" blink-teleportation="pos: -3.08328 2 -3.41235; hide: true " ></a-box>   
+      <a-box id="box1"  position="0.55281 0.1 1.48203" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable"blink-teleportation="pos: -1 1 -1; hide: true"
     
     ></a-box> 
- <a-box id="box2" grabbable dynamic-body position="0.56386 0.1 -3.66149" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box"  class="clickable" blink-teleportation="pos: -2 0.5 -1; hide: true"
+ <a-box id="box2"  position="0.56386 0.1 -3.66149" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box"  class="clickable" blink-teleportation="pos: -2 1 -1; hide: true"
     
     ></a-box> 
-  <a-box id="box3"  dynamic-body position="-1 0.1 3.73918" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: 2 0.5 -1; hide: true"
+  <a-box id="box3"  position="-1 0.1 3.73918" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 -1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: -2 1 -1; hide: true"
     
     ></a-box>  
- <a-box id="box4"  dynamic-body position="-3.00254 0.1 1.15781" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: 1 0.5 -1; hide: true"
+ <a-box id="box4"   position="-3.00254 0.1 1.15781" visible="true" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 1"  aabb-collider="objects: a-cylinder,a-sphere,a-box" class="clickable" blink-teleportation="pos: -3 1 -1; hide: true"
     
     ></a-box>  
     <a-gltf-model id="butterflymodel"  moverandomly src="#butterfly" position = "0 1 -1" scale="5 5 5" animation-mixer  ></a-gltf-model>
@@ -134,6 +133,6 @@
   
 </body>
 <script>
-
+     
 </script>
 </html>
