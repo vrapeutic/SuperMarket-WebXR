@@ -48,7 +48,7 @@ AFRAME.registerComponent('blink-teleportation', {
         }
         
         // CREATE A TRANSPARENT BLACK IMAGE
-        var blink = document.createElement('a-image');
+    /*    var blink = document.createElement('a-image');
         blink.setAttribute('material', {
             color: data.color,
             opacity: 0
@@ -59,16 +59,16 @@ AFRAME.registerComponent('blink-teleportation', {
         });
         // SET THE BLACK IMAGE POSITION AND APPEND IT AS CAMERA'S CHILD ENTITY
         blink.object3D.position.z = -0.1;
-        data.camera.appendChild(blink);
+        data.camera.appendChild(blink);*/
         
         // ON ANY data.deviceButtons, ANIMATE THE BLACK IMAGE (FADE-IN)
         data.deviceButtons.forEach(function (btn) {
             el.addEventListener(btn, function () {
-                blink.setAttribute('animation', {
+               /* blink.setAttribute('animation', {
                     property: 'material.opacity',
                     from: 0,
                     to: 1
-                });
+                });*/
 
                 // WHEN FADE-IN ANIMATION COMPLETES, MOVE THE CAMERA RIG TO DESTINATION
                 setTimeout(function () {

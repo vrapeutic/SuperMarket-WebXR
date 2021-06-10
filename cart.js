@@ -10,7 +10,7 @@ AFRAME.registerComponent('product', {
    let product;
    el.firstElementChild.addEventListener('correct',()=>{
     var correctLight = document.createElement('a-entity');
-    correctLight.setAttribute("area-light", "intensity:5; width:8; height:2; color:green;showHelper:false");
+    correctLight.setAttribute("area-light", "intensity:1; width:1; height:1; color:green;showHelper:false");
     correctLight.setAttribute("id","greenLight");
    // correctLight.setAttribute("position",el.firstElementChild.object3D.position);
    // el.setAttribute("color", "#1dd4ed")
@@ -43,13 +43,14 @@ var cartRot=document.querySelector('a-camera').object3D.rotation
        //  direction.multiplyScalar(0.1)
           // get the current position
           var pos = el.getAttribute("position");
-          // add the direction vector
+          // add the direction vector0
          // pos.add(direction)
           // set the new position
          // player.setAttribute("position", pos); 
            pos.z--;
 el.setAttribute('animation',"property:position; to:"+pos.x+""+pos.y+""+pos.z+"delay:5000 ;dur:8000");
-   el.setAttribute('animation-mixer',"clampWhenFinished:  true;  loop:  false;  repetitions:  0");
+//el.firstElementChild.setAttribute('animation',"property:position; to:"+0+""+.8+""+0+"delay:5000 ;dur:8000"); 
+el.setAttribute('animation-mixer',"clampWhenFinished:  true;  loop:  false;  repetitions:  0");
   //el.firstElementChild.object3D.posittion.z--;
  setTimeout(() => {
       el.removeAttribute('animation-mixer');
