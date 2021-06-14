@@ -73,11 +73,15 @@ AFRAME.registerComponent('blink-teleportation', {
                 // WHEN FADE-IN ANIMATION COMPLETES, MOVE THE CAMERA RIG TO DESTINATION
                 setTimeout(function () {
                     var camRig = document.querySelector('[camera]');
-
+                    var cart=document.getElementById('trolly');
                   //  var newPos = objectToPos(incomingData.position);
               
                    camRig.removeAttribute('wasd-controls');
                     camRig.setAttribute('position', data.pos)
+                 //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
+                 cart.object3D.position.x=data.pos.x;
+                 cart.object3D.position.z=(data.pos.z-1);
+
                     camRig.setAttribute('wasd-controls');
                     camRig.setAttribute('wasd-controls', true);
                     camRig.setAttribute('wasd-controls', 'true');

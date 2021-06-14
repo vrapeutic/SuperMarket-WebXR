@@ -48,16 +48,16 @@
    <a-asset-item id="pizza" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_pizza_cheese_v1.01.glb?v=1622983124706"></a-asset-item>
    <a-asset-item id="ice" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_icecream_v1.01.glb?v=1622983125714"></a-asset-item>
    <a-asset-item id="cereals" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cereals_v1.01.glb?v=1622983126227"></a-asset-item>
-   <a-asset-item id="cheese" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cheese_v1.01.glb?v=1622983128838"></a-asset-item>
-   <a-asset-item id="biscuits" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_biscuits_v1.01.glb?v=1622983128965"></a-asset-item>
+   <a-asset-item id="cheese" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cheese_v1.02.glb?v=1623602758606"></a-asset-item>
+   <a-asset-item id="biscuits" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_biscuits_v1.02.glb?v=1623602757706"></a-asset-item>
    <a-asset-item id="meat" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_meat_raw_v1.01.glb?v=1622983129306"></a-asset-item>
    <a-asset-item id="orange" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_juice_orange_v1.01.glb?v=1622983129585"></a-asset-item>
    <a-asset-item id="apple" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_juice_apple_v1.01.glb?v=1622983130458"></a-asset-item>
    <a-asset-item id="fish" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_fish_v1.01.glb?v=1622983130539"></a-asset-item>
-   <a-asset-item id="butter" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_butter_v1.01.glb?v=1622983130635"></a-asset-item>
-   <a-asset-item id="milk" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_milk_v1.01.glb?v=1622983131097"></a-asset-item>
-   <a-asset-item id="egg" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_EggBox_v1.01.glb?v=1622983191807s"></a-asset-item>
-   <a-asset-item id="bread2" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_BreadPackage_v1.01.glb?v=1622983192475"></a-asset-item>
+   <a-asset-item id="butter" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_butter_v1.02.glb?v=1623602758021"></a-asset-item>
+   <a-asset-item id="milk" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_milk_v1.02.glb?v=1623602762288"></a-asset-item>
+   <a-asset-item id="egg" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_EggBox_v1.02.glb?v=1623602760277"></a-asset-item>
+   <a-asset-item id="bread2" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_BreadPackage_v1.02.glb?v=1623602758561"></a-asset-item>
 
   </a-assets>  
   <a-box class="draggable" scale="0.2 0.2 0.2" ></a-box>
@@ -86,39 +86,38 @@
       <a-entity hand-controls="hand: right" grabb class = "hand"></a-entity> -->
      
          
-      <!-- grabbable correct. product -->
-      <a-box   id = "correct1"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.4  1 1"  product-collector    scale="0.1 0.1 0.1" >  </a-box>
-
-          <a-box   id = "correct"  dynamic-body   grabbable  class="Items"   color="blue"  position="0.23  1 1" product-collector     scale="0.1 0.1 0.1" >  </a-box>
-      <!-- grabbable wrong. product -->
-           <a-box   id = "wrong"  dynamic-body   grabbable  class="Items"   color="red"  position="1 1 1"  product-collector    scale="0.1 0.3 0.1" ></a-box> </a-box>
-           <a-entity gltf-model="#butter"  grabbable  id = "item1"  dynamic-body     class="Items"   color="red" visible="true"  position="-1 2 -5.73918"  product-collector   > </a-entity>
-           <a-entity gltf-model="#egg"  grabbable  id = "item2"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.2 2 -5.73918"  product-collector   > </a-entity>
-           <a-entity gltf-model="#bread2"  grabbable  id = "item3"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.5 2 -5.73918"  product-collector   > </a-entity>
-           <a-entity gltf-model="#milk"  grabbable  id = "item4"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.4 2 -5.73918"  product-collector   > </a-entity>
-           <a-entity gltf-model="#orange"  grabbable  id = "item5"  dynamic-body     class="Items"   color="red" visible="true"  position="-0.7 2 -5.73918"  product-collector   > </a-entity>
-           <a-entity gltf-model="#cheese"  grabbable  id = "item6"  dynamic-body     class="Items"   color="red" visible="true"  position="-0.9 2 -5.73918"  product-collector   > </a-entity>
+    
+           <a-entity gltf-model="#butter"  grabbable  id = "item1"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.955 0.62 -4.4257"  product-collector   > </a-entity>
+           <a-entity gltf-model="#egg"  grabbable  id = "item2"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.96192 1.4 -5.75553"  product-collector   > </a-entity>
+           <a-entity gltf-model="#bread2"  grabbable  id = "item3"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.6 0.4 -8.5"  product-collector   > </a-entity>
+           <a-entity gltf-model="#milk"  grabbable  id = "item4"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.9 0.62 -5.73918"  product-collector   > </a-entity>
+           <a-entity gltf-model="#biscuits"  grabbable  id = "item5"  dynamic-body     class="Items"   color="red" visible="true"  position="1.7 0.72 -10.25" rotation="0 -90 0"  product-collector   > </a-entity>
+           <a-entity gltf-model="#cheese"  grabbable  id = "item6"  dynamic-body     class="Items"   color="red" visible="true"  position="-1.7 0.5 -9"  product-collector   > </a-entity>
 
            
-     <a-gltf-model id="trolly"    product  src="#cart" position="0.2 0.10 -2" rotation = "0 -180 0" aabb-collider="objects: .Items,.notItems"  > 
+     <a-gltf-model id="trolly"    product  src="#cart" position="0.2 0.10 -4" rotation = "0 -180 0" aabb-collider="objects: .Items,.notItems"  > 
  
-      <a-box id="collider" scale="0.5 0.5 1" position="0 .8 0.2 " aabb-collider="objects: .Items,.notItems" material="opacity: 0.2" geometry="">
+      <a-box id="collider" scale="0.5 0.5 1" position="0 .8 0.2 " aabb-collider="objects: .Items,.notItems" material="opacity: 0.01" geometry="">
        
              </a-box>
       </a-gltf-model> 
       <a-plane   position="0 0 0" rotation="-90 0 0" material="opacity: 0.1" width="4" height="4" color="#7BC8A4" static-body scale ="10 10 10"></a-plane>
+      <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 0.67 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
+      <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 1.2 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity:0"></a-entity>
+      <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 0.2 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
+      <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="2.07155 0.7 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
 
-     <a-gltf-model src="#environment"  position="0 0.005 10"    ></a-gltf-model>
+      <a-gltf-model src="#environment"  position="0 0.005 10"    ></a-gltf-model>
 
 
     <!----------telepirt target path-->
-      <a-entity id="box1" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5" position="0.55281 2 -1.48203" visible="true"  class="clickable" blink-teleportation="pos: 0.55281 2 -1.48203; hide: true"
+      <a-entity id="box1" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5" position="-1 2 -8.48203" visible="true"  class="clickable" blink-teleportation="pos: -1 1 -8.48203; hide: true"
     
     ></a-entity> 
- <a-entity id="box2" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5" position="0.56386 2 -7.66149" visible="true"  class="clickable" blink-teleportation="pos: 0.56386 2 -8.66149; hide: true"
+ <a-entity id="box2" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5" position="0.56386 2 -9.66149" visible="true"  class="clickable" blink-teleportation="pos: 0.56386 1 -9.66149; hide: true"
     
     ></a-entity> 
-     <a-entity id="box3" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5"  position="-1 2 -5.73918" visible="true"  class="clickable" blink-teleportation="pos:-1 2 -5.73918; hide: true"
+     <a-entity id="box3" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5"  position="-1 2 -5.73918" visible="true"  class="clickable" blink-teleportation="pos:-1 1 -5.73918; hide: true"
     
     ></a-entity>  
  <!--
