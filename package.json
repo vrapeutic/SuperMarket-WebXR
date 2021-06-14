@@ -1,0 +1,23 @@
+{
+  "name": "supermarket-webxr",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "dev":"live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vrapeutic/SuperMarket-WebXR.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/vrapeutic/SuperMarket-WebXR/issues"
+  },
+  "homepage": "https://github.com/vrapeutic/SuperMarket-WebXR#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
