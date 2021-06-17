@@ -18,7 +18,6 @@ The supermarket is a social scenario interactive game. The game starts in a real
  - [A-Frame](https://aframe.io/)
 	 - [Animation Mixer](https://www.8thwall.com/8thwall/animation-mixer-aframe)
 	 - [AABB Colider](https://github.com/supermedium/superframe/tree/master/components/aabb-collider/)
-	 - [SPE Particles](https://github.com/harlyq/aframe-spe-particles-component)
  - HTML, CSS, JavaScript
 
 ## Installation Guide
