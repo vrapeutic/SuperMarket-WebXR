@@ -36,10 +36,6 @@ The supermarket is a social scenario interactive game. The game starts in a real
  5. Go to the localhost URL specified in the terminal
  6. Congrats! You've got your local development environment ready!
 
-### 2 | Install and run the project locally using Docker
----
-
-
 ### 2 | Run the project on Glitch platform
 ---
  1. Go to [Glitch](https://glitch.com/) platform
