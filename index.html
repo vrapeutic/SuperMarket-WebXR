@@ -80,11 +80,10 @@
 
             <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
             <!--- superhands---------------------------------------->
-            <a-entity progressive-controls="objects: .Items,.notItems"></a-entity>
+            <a-entity progressive-controls="objects:#trolly,.clickable,.Items,.notItems"></a-entity>
             <!----------------------------------------------------------------------->
             <a-entity id="camRig" position="0 0 5">
                 <a-camera id="cam" position="0 0 0">"
-                    <a-entity id="my-cursor" cursor="rayOrigin: mouse" raycaster="objects: #trolly,.clickable,.Items,.notItems;"></a-entity>
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
 
                 </a-camera>
