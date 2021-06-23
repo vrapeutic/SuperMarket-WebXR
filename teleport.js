@@ -76,6 +76,8 @@ AFRAME.registerComponent('blink-teleportation', {
                     //  var newPos = objectToPos(incomingData.position);
 
                     camRig.removeAttribute('wasd-controls');
+                    //  data.cameraRig.setAttribute('position', data.pos);
+
                     camRig.setAttribute('position', data.pos)
                         //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
                     cart.object3D.position.x = data.pos.x;
@@ -94,7 +96,6 @@ AFRAME.registerComponent('blink-teleportation', {
                      camRig.setAttribute('look-controls', true);
                      camRig.setAttribute('look-controls', 'true');
                      camRig.setAttribute('look-controls-enabled', true);*/
-                    data.cameraRig.setAttribute('position', data.pos);
 
                     // CLASS AND VISIBLE ATTRIBUTES
                     for (var i = 0; i < blinkTeleportationEls.length; i++) {
@@ -119,11 +120,7 @@ AFRAME.registerComponent('blink-teleportation', {
         });
 
         // ON CUSTOM EVENT, ANIMATE THE BLACK IMAGE (FADE-OUT)
-        el.addEventListener('position-changed', function() {
-            blink.setAttribute('animation', {
-                from: 1,
-                to: 0
-            });
-        });
+
+
     }
 })
