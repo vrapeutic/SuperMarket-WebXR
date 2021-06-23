@@ -49,6 +49,7 @@ AFRAME.registerComponent('product', {
             // set the new position
             // player.setAttribute("position", pos); 
             pos.z--;
+
             el.setAttribute('animation', "property:position; to:" + pos.x + "" + pos.y + "" + pos.z + "delay:5000 ;dur:8000");
             //el.firstElementChild.setAttribute('animation',"property:position; to:"+0+""+.8+""+0+"delay:5000 ;dur:8000"); 
             el.setAttribute('animation-mixer', "clampWhenFinished:  true;  loop:  false;  repetitions:  0");
