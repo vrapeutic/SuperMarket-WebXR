@@ -83,7 +83,7 @@
             <a-entity progressive-controls="objects: .Items,.notItems"></a-entity>
             <!----------------------------------------------------------------------->
             <a-entity id="camRig" position="0 0 5">
-                <a-camera id="cam" position="0 0 2">
+                <a-camera id="cam" position="0 0 0">
                     <a-entity id="my-cursor" cursor="rayOrigin: mouse" raycaster="objects: #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
 
@@ -144,7 +144,7 @@
       <a-entity id="box" gltf-model="#arrow" animation-mixer rotation = "90 -180 0"  scale="0.5 0.5 0.5"  position="-3.08328 2 -3.41235"  visible="true"  class="clickable" blink-teleportation="pos: -3.08328 2 -3.41235; hide: true " ></a-entity>   
         <a-gltf-model id="butterflymodel" moverandomly src="#butterfly" position="0 3 -1" scale="5 5 5" animation-mixer></a-gltf-model>
 -->
-            <a-text id="counter" value="0" geometry="primitive:plane" visible="true"></a-text>
+            <a-text id="counter" value="0" geometry="primitive:plane" visible="false"></a-text>
 
         </a-scene>
 
