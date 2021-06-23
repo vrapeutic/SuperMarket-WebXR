@@ -84,13 +84,11 @@
             <!----------------------------------------------------------------------->
             <a-entity id="camRig" position="0 0 5">
                 <a-camera id="cam" position="0 0 0">"
-                    <a-entity id="my-cursor" cursor="rayOrigin: mouse" raycaster="objects: #trolly,.clickable,.Items,.notItems;"></a-entity>
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
 
                 </a-camera>
                 <a-entity quest-controls="hand: left" grab class="hand"></a-entity>
                 <a-entity quest-controls="hand: right" grab class="hand"></a-entity>
-                <a-entity laser-controls="hand: right" raycaster="objects:#trolly,.clickable,.Items,.notItems; far: 1000"></a-entity>
 
             </a-entity>
 
@@ -152,6 +150,8 @@
 
 </body>
 <script>
+    var camRig = document.querySelector('[camera]');
+    camRig.removeAttribute('wasd-controls');
 </script>
 
 </html>

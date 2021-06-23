@@ -86,14 +86,14 @@ AFRAME.registerComponent('blink-teleportation', {
                     camRig.setAttribute('wasd-controls', 'true');
                     camRig.setAttribute('wasd-controls-enabled', true);
 
-                    /* camRig.removeAttribute('look-controls');
-                     camRig.object3D.rotation.x = incomingData.rotation._x
-                     camRig.object3D.rotation.y = incomingData.rotation._y
-                     camRig.object3D.rotation.z = incomingData.rotation._z
-                     camRig.setAttribute('look-controls');
-                     camRig.setAttribute('look-controls', true);
-                     camRig.setAttribute('look-controls', 'true');
-                     camRig.setAttribute('look-controls-enabled', true);*/
+                    camRig.removeAttribute('look-controls');
+                    camRig.object3D.rotation.x = incomingData.rotation._x
+                    camRig.object3D.rotation.y = incomingData.rotation._y
+                    camRig.object3D.rotation.z = incomingData.rotation._z
+                    camRig.setAttribute('look-controls');
+                    camRig.setAttribute('look-controls', true);
+                    camRig.setAttribute('look-controls', 'true');
+                    camRig.setAttribute('look-controls-enabled', true);
                     //  data.cameraRig.setAttribute('position', data.pos);
 
                     // CLASS AND VISIBLE ATTRIBUTES
