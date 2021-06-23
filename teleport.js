@@ -1,7 +1,7 @@
 AFRAME.registerComponent('blink-teleportation', {
     schema: {
         camera: { type: 'selector', default: '#cam' },
-        cameraRig: { type: 'selector', default: '#cam' },
+        cameraRig: { type: 'selector', default: '#camRig' },
         deviceButtons: { default: ['click', 'mousedown', 'triggerdown'] },
         cursor: { type: 'string', default: '#my-cursor' },
         raycasterObjects: { type: 'string', default: '.clickable' },
