@@ -44,8 +44,8 @@ AFRAME.registerComponent('blink-teleportation', {
                 controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
                 controller_LH.setAttribute('garb', 'enabled', true);
 
-                data.cameraRig.appendChild(controller_RH);
-                data.cameraRig.appendChild(controller_LH);
+                data.camera.appendChild(controller_RH);
+                data.camera.appendChild(controller_LH);
             }
         }
 
