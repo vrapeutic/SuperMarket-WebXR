@@ -83,8 +83,8 @@ AFRAME.registerComponent('blink-teleportation', {
                     //data.cameraRig.setAttribute('position', data.pos);
 
                     // camRig.setAttribute('position', data.pos)
-                    //cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
-                    data.camRig.object3D.position.z = data.pos.z;
+                    cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
+                    // data.camRig.object3D.position.z = data.pos.z;
 
 
 
