@@ -38,6 +38,7 @@ AFRAME.registerComponent('blink-teleportation', {
                 var controller_RH = document.createElement('a-entity');
                 controller_RH.setAttribute('laser-controls', 'hand', 'right');
                 controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                controller_RH.setAttribute('garb', 'enabled', true);
                 var controller_LH = document.createElement('a-entity');
                 controller_LH.setAttribute('laser-controls', 'hand', 'left');
                 controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjects);
@@ -74,11 +75,11 @@ AFRAME.registerComponent('blink-teleportation', {
                     //  var newPos = objectToPos(incomingData.position);
 
                     camRig.removeAttribute('wasd-controls');
-                    //data.cameraRig.setAttribute('position', data.pos);
+                    data.cameraRig.setAttribute('position', data.pos);
 
-                    camRig.setAttribute('position', data.pos)
-                        //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
-                        //camRig.object3D.position.z = data.pos.z;
+                    //camRig.setAttribute('position', data.pos)
+                    //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
+                    camRig.object3D.position.z = data.pos.z;
 
                     cart.object3D.position.x = data.pos.x;
                     cart.object3D.position.z = (data.pos.z - 1);
