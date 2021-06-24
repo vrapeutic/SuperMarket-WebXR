@@ -80,10 +80,10 @@ AFRAME.registerComponent('blink-teleportation', {
                     camRig.removeAttribute('wasd-controls');
                     cart.object3D.position.x = data.pos.x;
                     cart.object3D.position.z = (data.pos.z - 1);
-                    //data.cameraRig.setAttribute('position', data.pos);
+                    data.cameraRig.setAttribute('position', data.pos);
 
                     // camRig.setAttribute('position', data.pos)
-                    cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
+                    // cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
                     // data.camRig.object3D.position.z = data.pos.z;
 
 
