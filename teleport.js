@@ -1,20 +1,19 @@
-
 AFRAME.registerComponent('blink-teleportation', {
-	schema: {
-        camera: {type: 'selector', default: '#cam'},
-        cameraRig: {type: 'selector', default: '#camRig'},
-        deviceButtons: {default: ['click', 'mousedown', 'triggerdown']},
-        cursor: {type: 'string', default: '#my-cursor'},
-        raycasterObjects: {type: 'string', default: '.clickable'},
-        dof: {type: 'number', default: 6},
-        hand: {type: 'string', default: 'right'},
-        color: {type: 'string', default: '#000000'},
-        pos: {type: 'vec3'},
-        dur: {type: 'number', default: 250},
-        hide: {type: 'boolean', default: false}
-	},
-	
-	init: function () {
+    schema: {
+        camera: { type: 'selector', default: '#cam' },
+        cameraRig: { type: 'selector', default: '#camRig' },
+        deviceButtons: { default: ['click', 'mousedown', 'triggerdown'] },
+        cursor: { type: 'string', default: '#my-cursor' },
+        raycasterObjects: { type: 'string', default: '#trolly,.clickable,.Items,.notItems' },
+        dof: { type: 'number', default: 6 },
+        hand: { type: 'string', default: 'right' },
+        color: { type: 'string', default: '#000000' },
+        pos: { type: 'vec3' },
+        dur: { type: 'number', default: 250 },
+        hide: { type: 'boolean', default: false }
+    },
+
+    init: function() {
         var el = this.el;
         var data = this.data;
         var isMobileVR = AFRAME.utils.device.isMobileVR();
@@ -39,6 +38,7 @@ AFRAME.registerComponent('blink-teleportation', {
                 var controller_RH = document.createElement('a-entity');
                 controller_RH.setAttribute('laser-controls', 'hand', 'right');
                 controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                controller_RH.setAttribute('raycaster', 'far:1000');
                 var controller_LH = document.createElement('a-entity');
                 controller_LH.setAttribute('laser-controls', 'hand', 'left');
                 controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjects);
@@ -46,56 +46,56 @@ AFRAME.registerComponent('blink-teleportation', {
                 data.cameraRig.appendChild(controller_LH);
             }
         }
-        
+
         // CREATE A TRANSPARENT BLACK IMAGE
-    /*    var blink = document.createElement('a-image');
-        blink.setAttribute('material', {
-            color: data.color,
-            opacity: 0
-        });
-        blink.setAttribute('animation', {
-            dur: data.dur,
-            easing: 'easeInOutQuad'
-        });
-        // SET THE BLACK IMAGE POSITION AND APPEND IT AS CAMERA'S CHILD ENTITY
-        blink.object3D.position.z = -0.1;
-        data.camera.appendChild(blink);*/
-        
+        /*    var blink = document.createElement('a-image');
+            blink.setAttribute('material', {
+                color: data.color,
+                opacity: 0
+            });
+            blink.setAttribute('animation', {
+                dur: data.dur,
+                easing: 'easeInOutQuad'
+            });
+            // SET THE BLACK IMAGE POSITION AND APPEND IT AS CAMERA'S CHILD ENTITY
+            blink.object3D.position.z = -0.1;
+            data.camera.appendChild(blink);*/
+
         // ON ANY data.deviceButtons, ANIMATE THE BLACK IMAGE (FADE-IN)
-        data.deviceButtons.forEach(function (btn) {
-            el.addEventListener(btn, function () {
-               /* blink.setAttribute('animation', {
-                    property: 'material.opacity',
-                    from: 0,
-                    to: 1
-                });*/
+        data.deviceButtons.forEach(function(btn) {
+            el.addEventListener(btn, function() {
+                /* blink.setAttribute('animation', {
+                     property: 'material.opacity',
+                     from: 0,
+                     to: 1
+                 });*/
 
                 // WHEN FADE-IN ANIMATION COMPLETES, MOVE THE CAMERA RIG TO DESTINATION
-                setTimeout(function () {
+                setTimeout(function() {
                     var camRig = document.querySelector('[camera]');
-                    var cart=document.getElementById('trolly');
-                  //  var newPos = objectToPos(incomingData.position);
-              
-                   camRig.removeAttribute('wasd-controls');
+                    var cart = document.getElementById('trolly');
+                    //  var newPos = objectToPos(incomingData.position);
+
+                    camRig.removeAttribute('wasd-controls');
                     camRig.setAttribute('position', data.pos)
-                 //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
-                 cart.object3D.position.x=data.pos.x;
-                 cart.object3D.position.z=(data.pos.z-1);
+                        //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
+                    cart.object3D.position.x = data.pos.x;
+                    cart.object3D.position.z = (data.pos.z - 1);
 
                     camRig.setAttribute('wasd-controls');
                     camRig.setAttribute('wasd-controls', true);
                     camRig.setAttribute('wasd-controls', 'true');
                     camRig.setAttribute('wasd-controls-enabled', true);
-              
-                   /* camRig.removeAttribute('look-controls');
-                    camRig.object3D.rotation.x = incomingData.rotation._x
-                    camRig.object3D.rotation.y = incomingData.rotation._y
-                    camRig.object3D.rotation.z = incomingData.rotation._z
-                    camRig.setAttribute('look-controls');
-                    camRig.setAttribute('look-controls', true);
-                    camRig.setAttribute('look-controls', 'true');
-                    camRig.setAttribute('look-controls-enabled', true);*/
-                  //  data.cameraRig.setAttribute('position', data.pos);
+
+                    /* camRig.removeAttribute('look-controls');
+                     camRig.object3D.rotation.x = incomingData.rotation._x
+                     camRig.object3D.rotation.y = incomingData.rotation._y
+                     camRig.object3D.rotation.z = incomingData.rotation._z
+                     camRig.setAttribute('look-controls');
+                     camRig.setAttribute('look-controls', true);
+                     camRig.setAttribute('look-controls', 'true');
+                     camRig.setAttribute('look-controls-enabled', true);*/
+                    data.cameraRig.setAttribute('position', data.pos);
 
                     // CLASS AND VISIBLE ATTRIBUTES
                     for (var i = 0; i < blinkTeleportationEls.length; i++) {
@@ -118,9 +118,9 @@ AFRAME.registerComponent('blink-teleportation', {
                 }, data.dur);
             });
         });
-        
+
         // ON CUSTOM EVENT, ANIMATE THE BLACK IMAGE (FADE-OUT)
-        el.addEventListener('position-changed', function () {
+        el.addEventListener('position-changed', function() {
             blink.setAttribute('animation', {
                 from: 1,
                 to: 0
