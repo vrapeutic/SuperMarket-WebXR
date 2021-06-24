@@ -24,25 +24,25 @@ AFRAME.registerComponent('blink-teleportation', {
         if (!isMobileVR && !isHeadsetConnected) {
             // Standard Desktop
             var cursor = document.createElement('a-cursor');
-            cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
+            // cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
             data.camera.appendChild(cursor);
         } else if (isMobileVR || isHeadsetConnected) {
             if (data.dof === 3) {
                 // Oculus Go
                 var controller_1 = document.createElement('a-entity');
-                controller_1.setAttribute('laser-controls', 'hand', data.hand);
-                controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                // controller_1.setAttribute('laser-controls', 'hand', data.hand);
+                //controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
                 data.camera.appendChild(controller_1);
             } else if (data.dof === 6) {
                 // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
                 var controller_RH = document.createElement('a-entity');
-                controller_RH.setAttribute('laser-controls', 'hand', 'right');
-                controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                controller_RH.setAttribute('raycaster', 'far', '100');
+                ////controller_RH.setAttribute('laser-controls', 'hand', 'right');
+                // controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                // controller_RH.setAttribute('raycaster', 'far', '100');
                 controller_RH.setAttribute('garb', 'enabled', true);
                 var controller_LH = document.createElement('a-entity');
-                controller_LH.setAttribute('laser-controls', 'hand', 'left');
-                controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
+                // controller_LH.setAttribute('laser-controls', 'hand', 'left');
+                //  controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
                 controller_LH.setAttribute('garb', 'enabled', true);
 
                 data.camera.appendChild(controller_RH);
