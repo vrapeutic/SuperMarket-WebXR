@@ -86,20 +86,23 @@
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
 
                 </a-camera>
-                <a-entity progressive-controls></a-entity>
 
 
             </a-entity>
-            <a-entity quest-controls="hand: right" grab class="hand"></a-entity>
+
+            <a-entity progressive-controls></a-entity>
+
+            <a-entity hand-controls="hand: left" grabb class="hand"></a-entity>
+            <a-entity hand-controls="hand: right" grabb class="hand"></a-entity>
             <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 10"></a-entity>
 
 
 
 
 
-            <!-- super hands controls   
-           <a-entity hand-controls="hand: left" grabb  class = "hand"></a-entity>
-      <a-entity hand-controls="hand: right" grabb class = "hand"></a-entity> -->
+            <!-- super hands controls     <a-entity quest-controls="hand: left" grab class="hand"></a-entity>
+            <a-entity quest-controls="hand: right" grab class="hand"></a-entity>
+            -->
 
 
 
