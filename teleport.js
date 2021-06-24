@@ -4,7 +4,7 @@ AFRAME.registerComponent('blink-teleportation', {
         cameraRig: { type: 'selector', default: '#camRig' },
         deviceButtons: { default: ['click', 'mousedown', 'triggerdown'] },
         cursor: { type: 'string', default: '#my-cursor' },
-        raycasterObjects: { type: 'string', default: '.clickable' },
+        raycasterObjects: { type: 'string', default: '.clickable,#trolly,.Items,.notItems' },
         dof: { type: 'number', default: 6 },
         hand: { type: 'string', default: 'right' },
         color: { type: 'string', default: '#000000' },
@@ -21,30 +21,30 @@ AFRAME.registerComponent('blink-teleportation', {
         var blinkTeleportationEls = document.querySelectorAll('[blink-teleportation]');
 
         // DETECTING DEVICE AND SETTING SELECTIVE INTERSECTIONS
-        /* if (!isMobileVR && !isHeadsetConnected) {
-             // Standard Desktop
-             var cursor = document.createElement('a-cursor');
-             cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
-             data.camera.appendChild(cursor);
-         } else if (isMobileVR || isHeadsetConnected) {
-             if (data.dof === 3) {
-                 // Oculus Go
-                 var controller_1 = document.createElement('a-entity');
-                 controller_1.setAttribute('laser-controls', 'hand', data.hand);
-                 controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                 data.cameraRig.appendChild(controller_1);
-             } else if (data.dof === 6) {
-                 // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
-                 var controller_RH = document.createElement('a-entity');
-                 controller_RH.setAttribute('laser-controls', 'hand', 'right');
-                 controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                 var controller_LH = document.createElement('a-entity');
-                 controller_LH.setAttribute('laser-controls', 'hand', 'left');
-                 controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                 data.cameraRig.appendChild(controller_RH);
-                 data.cameraRig.appendChild(controller_LH);
-             }
-         }*/
+        if (!isMobileVR && !isHeadsetConnected) {
+            // Standard Desktop
+            var cursor = document.createElement('a-cursor');
+            cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
+            data.camera.appendChild(cursor);
+        } else if (isMobileVR || isHeadsetConnected) {
+            if (data.dof === 3) {
+                // Oculus Go
+                var controller_1 = document.createElement('a-entity');
+                controller_1.setAttribute('laser-controls', 'hand', data.hand);
+                controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                data.cameraRig.appendChild(controller_1);
+            } else if (data.dof === 6) {
+                // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
+                var controller_RH = document.createElement('a-entity');
+                controller_RH.setAttribute('laser-controls', 'hand', 'right');
+                controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                var controller_LH = document.createElement('a-entity');
+                controller_LH.setAttribute('laser-controls', 'hand', 'left');
+                controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                data.cameraRig.appendChild(controller_RH);
+                data.cameraRig.appendChild(controller_LH);
+            }
+        }
 
         // CREATE A TRANSPARENT BLACK IMAGE
         var blink = document.createElement('a-image');
@@ -74,11 +74,11 @@ AFRAME.registerComponent('blink-teleportation', {
                     //  var newPos = objectToPos(incomingData.position);
 
                     camRig.removeAttribute('wasd-controls');
-                    data.cameraRig.setAttribute('position', data.pos);
+                    //data.cameraRig.setAttribute('position', data.pos);
 
                     //    camRig.setAttribute('position', data.pos)
                     //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
-                    data.camRig.object3D.position.z = data.pos.z;
+                    camRig.object3D.position.z = data.pos.z;
 
                     cart.object3D.position.x = data.pos.x;
                     cart.object3D.position.z = (data.pos.z - 1);
