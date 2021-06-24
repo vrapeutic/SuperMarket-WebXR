@@ -19,6 +19,7 @@ AFRAME.registerComponent('blink-teleportation', {
         var isMobileVR = AFRAME.utils.device.isMobileVR();
         var isHeadsetConnected = AFRAME.utils.device.checkHeadsetConnected();
         var blinkTeleportationEls = document.querySelectorAll('[blink-teleportation]');
+        var cart = document.getElementById('trolly');
 
         // DETECTING DEVICE AND SETTING SELECTIVE INTERSECTIONS
         if (!isMobileVR && !isHeadsetConnected) {
@@ -74,17 +75,16 @@ AFRAME.registerComponent('blink-teleportation', {
                 });
                 setTimeout(function() {
                     var camRig = document.querySelector('[camera]');
-                    var cart = document.getElementById('trolly');
                     //  var newPos = objectToPos(incomingData.position);
 
                     camRig.removeAttribute('wasd-controls');
                     cart.object3D.position.x = data.pos.x;
                     cart.object3D.position.z = (data.pos.z - 1);
-                    data.cameraRig.setAttribute('position', data.pos);
+                    //data.cameraRig.setAttribute('position', data.pos);
 
                     // camRig.setAttribute('position', data.pos)
-                    cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
-                    // camRig.object3D.position.z = data.pos.z;
+                    //cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
+                    data.camRig.object3D.position.z = data.pos.z;
 
 
 
