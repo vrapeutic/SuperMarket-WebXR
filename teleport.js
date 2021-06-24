@@ -32,12 +32,13 @@ AFRAME.registerComponent('blink-teleportation', {
                 var controller_1 = document.createElement('a-entity');
                 controller_1.setAttribute('laser-controls', 'hand', data.hand);
                 controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                data.cameraRig.appendChild(controller_1);
+                data.camera.appendChild(controller_1);
             } else if (data.dof === 6) {
                 // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
                 var controller_RH = document.createElement('a-entity');
                 controller_RH.setAttribute('laser-controls', 'hand', 'right');
                 controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                controller_RH.setAttribute('raycaster', 'far', '100');
                 controller_RH.setAttribute('garb', 'enabled', true);
                 var controller_LH = document.createElement('a-entity');
                 controller_LH.setAttribute('laser-controls', 'hand', 'left');
@@ -77,7 +78,7 @@ AFRAME.registerComponent('blink-teleportation', {
                     //  var newPos = objectToPos(incomingData.position);
 
                     camRig.removeAttribute('wasd-controls');
-                    //data.cameraRig.setAttribute('position', data.pos);
+                    //data.camera.setAttribute('position', data.pos);
 
                     camRig.setAttribute('position', data.pos)
                         //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
