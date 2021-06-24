@@ -78,7 +78,6 @@
 
             <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
             <!--- superhands---------------------------------------->
-            <a-entity progressive-controls></a-entity>
             <!----------------------------------------------------------------------->
             <a-entity id="camRig" position="0 0 -2">
                 <a-camera id="cam" wasd-controls-enabled="false">
@@ -87,10 +86,10 @@
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
 
                 </a-camera>
+                <a-entity progressive-controls></a-entity>
 
 
             </a-entity>
-            <a-entity quest-controls="hand: left" grab class="hand"></a-entity>
             <a-entity quest-controls="hand: right" grab class="hand"></a-entity>
             <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 10"></a-entity>
 
