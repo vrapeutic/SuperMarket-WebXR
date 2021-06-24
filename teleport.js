@@ -3,10 +3,10 @@ AFRAME.registerComponent('blink-teleportation', {
         camera: { type: 'selector', default: '#cam' },
         cameraRig: { type: 'selector', default: '#camRig' },
         deviceButtons: { default: ['click', 'mousedown', 'triggerdown'] },
-        //  cursor: { type: 'string', default: '#my-cursor' },
-        //  raycasterObjects: { type: 'string', default: '.clickable,#trolly,.Items,.notItems' },
-        //     dof: { type: 'number', default: 6 },
-        //     hand: { type: 'string', default: 'right' },
+        cursor: { type: 'string', default: '#my-cursor' },
+        raycasterObjects: { type: 'string', default: '.Items,.notItems,.clickable,#trolly' },
+        dof: { type: 'number', default: 6 },
+        hand: { type: 'string', default: 'right' },
         color: { type: 'string', default: '#000000' },
         pos: { type: 'vec3' },
         dur: { type: 'number', default: 250 },
@@ -16,12 +16,12 @@ AFRAME.registerComponent('blink-teleportation', {
     init: function() {
         var el = this.el;
         var data = this.data;
-        //  var isMobileVR = AFRAME.utils.device.isMobileVR();
-        //  var isHeadsetConnected = AFRAME.utils.device.checkHeadsetConnected();
+        var isMobileVR = AFRAME.utils.device.isMobileVR();
+        var isHeadsetConnected = AFRAME.utils.device.checkHeadsetConnected();
         var blinkTeleportationEls = document.querySelectorAll('[blink-teleportation]');
 
         // DETECTING DEVICE AND SETTING SELECTIVE INTERSECTIONS
-        /*if (!isMobileVR && !isHeadsetConnected) {
+        if (!isMobileVR && !isHeadsetConnected) {
             // Standard Desktop
             var cursor = document.createElement('a-cursor');
             cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
@@ -41,11 +41,13 @@ AFRAME.registerComponent('blink-teleportation', {
                 controller_RH.setAttribute('garb', 'enabled', true);
                 var controller_LH = document.createElement('a-entity');
                 controller_LH.setAttribute('laser-controls', 'hand', 'left');
-                controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
+                controller_LH.setAttribute('garb', 'enabled', true);
+
                 data.cameraRig.appendChild(controller_RH);
                 data.cameraRig.appendChild(controller_LH);
             }
-        }*/
+        }
 
         // CREATE A TRANSPARENT BLACK IMAGE
         var blink = document.createElement('a-image');
@@ -75,11 +77,11 @@ AFRAME.registerComponent('blink-teleportation', {
                     //  var newPos = objectToPos(incomingData.position);
 
                     camRig.removeAttribute('wasd-controls');
-                    //  data.cameraRig.setAttribute('position', data.pos);
+                    //data.cameraRig.setAttribute('position', data.pos);
 
                     camRig.setAttribute('position', data.pos)
                         //   cart.setAttribute('position', " "+data.pos.x+"0.10"+data.pos.z);
-                        //camRig.object3D.position.z = data.pos.z;
+                        // camRig.object3D.position.z = data.pos.z;
 
                     cart.object3D.position.x = data.pos.x;
                     cart.object3D.position.z = (data.pos.z - 1);
