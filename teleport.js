@@ -22,6 +22,7 @@ AFRAME.registerComponent('teleportation', {
 
             });
             el.addEventListener('click', function() {
+                console.log(camRig);
                 camRig.setAttribute('animation', 'property: position;to:' + pos.x + '' + pos.y + '' + pos.z + ';dur: 1000')
             });
 
