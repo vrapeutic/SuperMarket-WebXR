@@ -25,7 +25,7 @@ AFRAME.registerComponent('blink-teleportation', {
         document.querySelector('a-scene').addEventListener('enter-vr', function() {
             let cam = document.querySelectorAll('[camera]');
             //  cam[0].parentNode.removeChild(cam[0]);
-            let hands = document.querySelectorAll('[hand-controls]');
+            let hands = document.querySelectorAll('[oculus-quest-controls]');
 
             cam.forEach(camera => {
                 if (camera.parentElement.id != 'camRig') {
@@ -108,7 +108,12 @@ AFRAME.registerComponent('blink-teleportation', {
                                 // cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
                                 // data.camRig.object3D.position.z = data.pos.z;
                             data.cameraRig.setAttribute('position', data.pos);
+                            hands.forEach(hand => {
+                                console.log(hand);
 
+                                hand.setAttribute('position', data.pos);
+
+                            })
 
 
                             camRig.setAttribute('wasd-controls');
