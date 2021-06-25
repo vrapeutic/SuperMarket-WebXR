@@ -25,7 +25,7 @@ AFRAME.registerComponent('blink-teleportation', {
         document.querySelector('a-scene').addEventListener('enter-vr', function() {
             let cam = document.querySelectorAll('[camera]');
             //  cam[0].parentNode.removeChild(cam[0]);
-            let hands = document.querySelectorAll('[quest-controls]');
+            let hands = document.querySelectorAll('[hand-controls]');
 
             cam.forEach(camera => {
                 if (camera.parentElement.id != 'camRig') {
@@ -33,15 +33,8 @@ AFRAME.registerComponent('blink-teleportation', {
                     camera.parentNode.removeChild(camera);
 
                 }
-                hands.forEach(hand => {
-                        console.log(hand);
-                        if (hand.parentElement.id != 'camRig') {
-                            console.log("hand");
 
-                            hand.parentNode.removeChild(hand);
-                        }
-                    })
-                    // DETECTING DEVICE AND SETTING SELECTIVE INTERSECTIONS
+                // DETECTING DEVICE AND SETTING SELECTIVE INTERSECTIONS
                 if (!isMobileVR && !isHeadsetConnected) {
                     // Standard Desktop
                     var cursor = document.createElement('a-cursor');
@@ -71,6 +64,14 @@ AFRAME.registerComponent('blink-teleportation', {
                         data.camRig.appendChild(controller_RH);
                         //  camRig2.appendChild(controller_LH);
                         //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
+                        hands.forEach(hand => {
+                            console.log(hand);
+                            if (hand.parentElement.id != 'camRig') {
+                                console.log("hand");
+
+                                hand.parentNode.removeChild(hand);
+                            }
+                        })
                     }
                 }
                 // CREATE A TRANSPARENT BLACK IMAGE
