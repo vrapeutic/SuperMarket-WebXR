@@ -25,14 +25,7 @@ AFRAME.registerComponent('blink-teleportation', {
             let cam = document.querySelectorAll('[camera]');
             //  cam[0].parentNode.removeChild(cam[0]);
             let hands = document.querySelectorAll('[hand-controls]');
-            hands.forEach(hand => {
-                console.log(hand);
-                if (hand.parentElement.id != 'camRig') {
-                    console.log("hand");
 
-                    hand.parentNode.removeChild(hand);
-                }
-            })
             cam.forEach(camera => {
                 if (camera.parentElement.id != 'camRig') {
                     camera.setAttribute('camera', 'active', false);
@@ -53,6 +46,7 @@ AFRAME.registerComponent('blink-teleportation', {
                         controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
                         data.camRig.appendChild(controller_1);
                     } else if (data.dof === 6) {
+
                         // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
                         var controller_RH = document.createElement('a-entity');
                         controller_RH.setAttribute('laser-controls', 'hand', 'right');
@@ -66,7 +60,14 @@ AFRAME.registerComponent('blink-teleportation', {
 
                         camRig2.appendChild(controller_RH);
                         camRig2.appendChild(controller_LH);
-                        //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
+                        hands.forEach(hand => {
+                                console.log(hand);
+                                if (hand.parentElement.id != 'camRig') {
+                                    console.log("hand");
+
+                                    hand.parentNode.removeChild(hand);
+                                }
+                            }) //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
                     }
                 }
                 // CREATE A TRANSPARENT BLACK IMAGE
