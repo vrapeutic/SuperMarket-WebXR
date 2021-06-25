@@ -106,6 +106,7 @@ AFRAME.registerComponent('blink-teleportation', {
                                 // data.camRig.object3D.position.z = data.pos.z;
                             data.cameraRig.setAttribute('position', data.pos);
                             data.rightHand.setAttribute('position', data.pos);
+                            ocument.querySelector('[quest-controls]').setAttribute('position', data.pos);
 
 
                             camRig.setAttribute('wasd-controls');
