@@ -16,12 +16,13 @@ AFRAME.registerComponent('teleportation', {
                 if (camera.parentElement.id != 'camRig') {
                     camera.setAttribute('camera', 'active', false);
                     camera.parentNode.removeChild(camera);
-                    el.addEventListener('click', function() {
-                        camRig.firstElementChild.setAttribute('animation', 'property: position;to:' + pos.x + '' + pos.y + '' + pos.z + ';dur: 1000')
-                    });
+
                 }
                 console.log(camera);
 
+            });
+            el.addEventListener('click', function() {
+                camRig.setAttribute('animation', 'property: position;to:' + pos.x + '' + pos.y + '' + pos.z + ';dur: 1000')
             });
 
         });
