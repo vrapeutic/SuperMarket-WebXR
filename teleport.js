@@ -64,8 +64,9 @@ AFRAME.registerComponent('blink-teleportation', {
                         controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
                         controller_LH.setAttribute('garb', 'enabled', true);
 
-                        camRig2.appendChild(controller_RH);
+                        //camRig2.appendChild(controller_RH);
                         camRig2.appendChild(controller_LH);
+                        camRig2.appendChild(document.getElementById("rightHand"));
                     }
                 }
                 // CREATE A TRANSPARENT BLACK IMAGE
