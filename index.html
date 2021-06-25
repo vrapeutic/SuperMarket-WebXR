@@ -45,11 +45,13 @@
         <!--- superhands---------------------------------------->
         <a-entity progressive-controls="objects: .Items,.notItems"></a-entity>
         <!----------------------------------------------------------------------->
-        <a-camera id="cam">
-            <a-sphere id="fade" visible="false" position="0 0 -1.5" rotation="0 0 0" scale="3 2 1" color="black">
-            </a-sphere>
-            <a-entity cursor="rayOrigin: mouse" raycaster="objects: #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
-        </a-camera>
+        <a-entity id="camRig" position="0 0 1">
+            <a-camera id="cam" wasd-controls-enabled="false">
+                <a-sphere id="fade" visible="false" position="0 0 -1.5" rotation="0 0 0" scale="3 2 1" color="black">
+                </a-sphere>
+                <a-entity cursor="rayOrigin: mouse" raycaster="objects: #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
+            </a-camera>
+        </a-entity>
 
         <a-entity laser-controls="hand: right" raycaster="objects:  #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
 
