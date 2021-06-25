@@ -58,15 +58,15 @@ AFRAME.registerComponent('blink-teleportation', {
                         controller_RH.setAttribute('laser-controls', 'hand', 'right');
                         controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
                         controller_RH.setAttribute('raycaster', 'far', '100');
-                        controller_RH.setAttribute('garb', 'enabled', true);
+                        controller_RH.setAttribute('hand-controls', 'enabled', true);
                         var controller_LH = document.createElement('a-entity');
                         controller_LH.setAttribute('laser-controls', 'hand', 'left');
                         controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
-                        controller_LH.setAttribute('garb', 'enabled', true);
+                        controller_LH.setAttribute('hand-controls', 'enabled', true);
 
-                        //camRig2.appendChild(controller_RH);
+                        camRig2.appendChild(controller_RH);
                         camRig2.appendChild(controller_LH);
-                        camRig2.appendChild(document.getElementById("rightHand"));
+                        document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
                     }
                 }
                 // CREATE A TRANSPARENT BLACK IMAGE
