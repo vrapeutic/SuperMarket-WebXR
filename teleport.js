@@ -10,6 +10,10 @@ AFRAME.registerComponent('blink-teleportation', {
         /**/
         document.querySelector('a-scene').addEventListener('enter-vr', function() {
             let cam = document.querySelectorAll('[camera]');
+            let hands = document.querySelectorAll('[hand-controls]');
+            hands.forEach(hand => {
+                camRig.appendChild(hand);
+            });
             //  cam[0].parentNode.removeChild(cam[0]);
             cam.forEach(camera => {
                 if (camera.parentElement.id != 'camRig') {
@@ -19,7 +23,8 @@ AFRAME.registerComponent('blink-teleportation', {
                 }
                 console.log(camera);
                 el.addEventListener('click', function() {
-                    camRig.setAttribute('position', pos);
+
+                    camRig.setAttribute('position', 'property: position;to:' + pos.x + '' + pos.y + '' + pos.z + ';dur: 1000')
                 });
             });
 
