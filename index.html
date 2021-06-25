@@ -88,8 +88,11 @@
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
 
                 </a-camera>
+                <a-entity oculus-quest-controls="hand: left"></a-entity>
 
+                <a-entity oculus-quest-controls="hand: right" thumbstick-logging></a-entity>
                 <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
+
 
             </a-entity>
 

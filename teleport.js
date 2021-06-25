@@ -61,7 +61,7 @@ AFRAME.registerComponent('blink-teleportation', {
                         controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
                         controller_LH.setAttribute('hand-controls', 'enabled', true);
 
-                        data.camRig.appendChild(controller_RH);
+                        // data.camRig.appendChild(controller_RH);
                         //  camRig2.appendChild(controller_LH);
                         //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
                         hands.forEach(hand => {
