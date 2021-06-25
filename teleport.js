@@ -66,7 +66,7 @@ AFRAME.registerComponent('blink-teleportation', {
 
                         camRig2.appendChild(controller_RH);
                         camRig2.appendChild(controller_LH);
-                        document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
+                        //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
                     }
                 }
                 // CREATE A TRANSPARENT BLACK IMAGE
