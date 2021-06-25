@@ -24,7 +24,7 @@ AFRAME.registerComponent('blink-teleportation', {
         document.querySelector('a-scene').addEventListener('enter-vr', function() {
             let cam = document.querySelectorAll('[camera]');
             //  cam[0].parentNode.removeChild(cam[0]);
-            let hands = document.querySelector('[hand-controls]');
+            let hands = document.querySelectorAll('[hand-controls]');
             hands.forEach(hand => {
                 camRig2.appendChild(hand);
             })
