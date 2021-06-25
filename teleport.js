@@ -19,13 +19,13 @@ AFRAME.registerComponent('teleportation', {
 
                 }
                 console.log(camera);
-
-            });
-            el.addEventListener('click', function() {
-                camRig.setAttribute('animation', 'property: position;to:' + pos.x + '' + pos.y + '' + pos.z + ';dur: 1000')
+                el.addEventListener('click', function() {
+                    camRig.setAttribute('animation', 'property: position;to:' + pos.x + '' + pos.y + '' + pos.z + ';dur: 1000')
+                });
             });
 
         });
+
 
     }
 })
