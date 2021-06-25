@@ -12,6 +12,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
     <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
     <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
@@ -50,6 +51,9 @@
                 </a-sphere>
                 <a-entity cursor="rayOrigin: mouse" raycaster="objects: #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
             </a-camera>
+            <a-entity hand-controls="hand: left" grab class="hand"></a-entity>
+            <a-entity hand-controls="hand: right" grab class="hand"></a-entity>
+            <a-entity laser-controls="hand: right" raycaster="objects:  #trolly,.clickable,.Items,.notItems; far: 100"></a-entity>
 
         </a-entity>
 
