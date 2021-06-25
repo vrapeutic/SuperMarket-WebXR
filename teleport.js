@@ -2,6 +2,7 @@ AFRAME.registerComponent('blink-teleportation', {
     schema: {
         camera: { type: 'selector', default: '#cam' },
         cameraRig: { type: 'selector', default: '#camRig' },
+        rightHand: { type: 'selector', default: '#rightHand' },
         deviceButtons: { default: ['click', 'mousedown', 'triggerdown'] },
         cursor: { type: 'string', default: '#my-cursor' },
         raycasterObjects: { type: 'string', default: '.Items,.notItems,.clickable,#trolly' },
@@ -33,43 +34,43 @@ AFRAME.registerComponent('blink-teleportation', {
 
                 }
                 // DETECTING DEVICE AND SETTING SELECTIVE INTERSECTIONS
-                if (!isMobileVR && !isHeadsetConnected) {
-                    // Standard Desktop
-                    var cursor = document.createElement('a-cursor');
-                    // cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                    data.camRig.appendChild(cursor);
-                } else if (isMobileVR || isHeadsetConnected) {
-                    if (data.dof === 3) {
-                        // Oculus Go
-                        var controller_1 = document.createElement('a-entity');
-                        controller_1.setAttribute('laser-controls', 'hand', data.hand);
-                        controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                        data.camRig.appendChild(controller_1);
-                    } else if (data.dof === 6) {
+                /* if (!isMobileVR && !isHeadsetConnected) {
+                     // Standard Desktop
+                     var cursor = document.createElement('a-cursor');
+                     // cursor.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                     data.camRig.appendChild(cursor);
+                 } else if (isMobileVR || isHeadsetConnected) {
+                     if (data.dof === 3) {
+                         // Oculus Go
+                         var controller_1 = document.createElement('a-entity');
+                         controller_1.setAttribute('laser-controls', 'hand', data.hand);
+                         controller_1.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                         data.camRig.appendChild(controller_1);
+                     } else if (data.dof === 6) {
 
-                        // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
-                        var controller_RH = document.createElement('a-entity');
-                        controller_RH.setAttribute('laser-controls', 'hand', 'right');
-                        controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
-                        controller_RH.setAttribute('raycaster', 'far', '100');
-                        controller_RH.setAttribute('hand-controls', 'enabled', true);
-                        var controller_LH = document.createElement('a-entity');
-                        controller_LH.setAttribute('laser-controls', 'hand', 'left');
-                        controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
-                        controller_LH.setAttribute('hand-controls', 'enabled', true);
+                         // Oculus Quest || Rift S, Rift, and (not tested but it should work) HTC Vive
+                         var controller_RH = document.createElement('a-entity');
+                         controller_RH.setAttribute('laser-controls', 'hand', 'right');
+                         controller_RH.setAttribute('raycaster', 'objects', data.raycasterObjects);
+                         controller_RH.setAttribute('raycaster', 'far', '100');
+                         controller_RH.setAttribute('hand-controls', 'enabled', true);
+                         var controller_LH = document.createElement('a-entity');
+                         controller_LH.setAttribute('laser-controls', 'hand', 'left');
+                         controller_LH.setAttribute('raycaster', 'objects', data.raycasterObjecs);
+                         controller_LH.setAttribute('hand-controls', 'enabled', true);
 
-                        camRig2.appendChild(controller_RH);
-                        camRig2.appendChild(controller_LH);
-                        hands.forEach(hand => {
-                                console.log(hand);
-                                if (hand.parentElement.id != 'camRig') {
-                                    console.log("hand");
+                         camRig2.appendChild(controller_RH);
+                         camRig2.appendChild(controller_LH);
+                         hands.forEach(hand => {
+                                 console.log(hand);
+                                 if (hand.parentElement.id != 'camRig') {
+                                     console.log("hand");
 
-                                    hand.parentNode.removeChild(hand);
-                                }
-                            }) //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
-                    }
-                }
+                                     hand.parentNode.removeChild(hand);
+                                 }
+                             }) //   document.getElementById("rightHand").parentNode.removeChild(document.getElementById("rightHand"));
+                     }
+                 }*/
                 // CREATE A TRANSPARENT BLACK IMAGE
                 var blink = document.createElement('a-image');
                 blink.setAttribute('material', {
@@ -104,7 +105,7 @@ AFRAME.registerComponent('blink-teleportation', {
                                 // cart.setAttribute('position', " " + data.pos.x + "0.10" + data.pos.z);
                                 // data.camRig.object3D.position.z = data.pos.z;
                             data.cameraRig.setAttribute('position', data.pos);
-
+                            data.rightHand.setAttribute('position', data.pos);
 
 
                             camRig.setAttribute('wasd-controls');
