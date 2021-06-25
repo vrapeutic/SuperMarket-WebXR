@@ -23,6 +23,6 @@ AFRAME.registerComponent('blink-teleportation', {
                 });
             });
 
-        });
+        })
     }
 })
