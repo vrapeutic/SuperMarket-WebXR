@@ -178,11 +178,15 @@ AFRAME.registerComponent('blink-teleportation', {
                 }
             })
             let camRig = document.querySelector('#camRig');
+            let cam = document.querySelector('#cam');
+
             el.addEventListener('click', function() {
                 console.log(hands);
 
 
                 camRig.setAttribute('position', pos);
+                cam.setAttribute('position', pos);
+
             });
         })
     }
