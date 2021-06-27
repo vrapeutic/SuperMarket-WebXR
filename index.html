@@ -90,7 +90,7 @@
                 </a-camera>
 
                 <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
-                <a-mixin id="righthand" aria-grabbed="#trolly" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: "
+                <a-mixin id="righthand" aria-grabbed="#biscuits" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: "
                     static-body="shape: sphere; sphereRadius: 0.02"></a-mixin>
                 <a-mixin id="lefthand" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: " static-body="shape: sphere; sphereRadius: 0.02"></a-mixin>
             </a-entity>
@@ -116,7 +116,7 @@
             <a-entity gltf-model="#biscuits" grabbable id="item5" dynamic-body class="Items" color="red" visible="true" position="1.7 0.72 -10.25" rotation="0 -90 0" product-collector> </a-entity>
             <a-entity gltf-model="#cheese" grabbable id="item6" dynamic-body class="Items" color="red" visible="true" position="-1.7 0.5 -9" product-collector> </a-entity>
             <a-entity gltf-model="#cheese" grabbable id="it" dynamic-body color="red" visible="true" position="0.2 1 -4"> </a-entity>
-            <a-entity gltf-model="#cheese" grabbable id="it" dynamic-body color="red" visible="true" position="0.2 1 -0.2"> </a-entity>
+            <a-entity gltf-model="#cheese" grabbable id="it2" dynamic-body color="red" visible="true" position="0.2 1 -0.2"> </a-entity>
 
 
             <a-gltf-model id="trolly" product src="#cart" position="0.2 0.10 -4" rotation="0 -180 0" aabb-collider="objects: .Items,.notItems">
