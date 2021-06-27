@@ -90,14 +90,14 @@
 
                 </a-camera>
 
-                <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
-                <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands></a-entity>
-                <a-entity id="righthand" auto-detect-controllers="hand:right" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: .Items,.notItems "
-                    static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
+
             </a-entity>
 
 
-
+            <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
+            <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands></a-entity>
+            <a-entity id="righthand" auto-detect-controllers="hand:right" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: .Items,.notItems "
+                static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
 
 
 
