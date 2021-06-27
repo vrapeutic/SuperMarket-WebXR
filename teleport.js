@@ -181,11 +181,11 @@ AFRAME.registerComponent('blink-teleportation', {
 
                 }
             })
+
             hands.forEach(hand => {
                 if (hand.parentElement.id != 'camRig') {
-
-                    //  hand.setAttribute('super-hands', 'active', false);
-                    hand.removeAttribute('[super-hands]');
+                    // camRig.replaceChild()
+                    hand.setAttribute('visible', false);
 
                 }
                 console.log(hand);
