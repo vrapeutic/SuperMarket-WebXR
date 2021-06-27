@@ -80,15 +80,20 @@
             <!--- superhands---------------------------------------->
             <a-entity progressive-controls></a-entity>
             <!----------------------------------------------------------------------->
-            <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
-                <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
-                <!-- camera -->
-                <a-entity id="head" camera="active: true" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: true"></a-entity>
-                <!-- Left Controller -->
-                <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; curveShootingSpeed: 18; landingMaxAngle: 60" visible="true"></a-entity>
-                <!-- Right Controller -->
-                <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .Items,.notItems,#trolly,.clickable, a-link;" line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
+            <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
+            <a-entity id="camRig">
+                <a-camera id="cam" wasd-controls-enabled="false">
+                    <a-entity cursor="rayOrigin: mouse"></a-entity>
+
+
+                </a-camera>
+
+                <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
+                <a-mixin id="righthand" aria-grabbed="#trolly" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: "
+                    static-body="shape: sphere; sphereRadius: 0.02"></a-mixin>
+                <a-mixin id="lefthand" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:" sphere-collider="objects: " static-body="shape: sphere; sphereRadius: 0.02"></a-mixin>
             </a-entity>
+
 
 
 
