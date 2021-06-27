@@ -80,10 +80,10 @@
 
             <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
             <!--- superhands---------------------------------------->
-            <a-entity progressive-controls></a-entity>
+            <a-entity progressive-controls="objects: [grabbable], [hoverable]"></a-entity>
             <!----------------------------------------------------------------------->
             <a-entity id="camRig">
-                <a-camera id="cam" look-controls-enabled="false" wasd-controls-enabled="false">
+                <a-camera id="cam" wasd-controls-enabled="false">
                     <a-entity cursor="rayOrigin: mouse"></a-entity>
 
                     <a-text id="EndTxt" value="" position="0 2 -10" text="width: 5; alphaTest: 1.38; color: black"></a-text>
@@ -92,8 +92,9 @@
 
                 <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
                 <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands></a-entity>
-                <a-entity id="righthand" grab auto-detect-controllers="hand:right" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:"
+                <a-entity id="righthand" grab auto-detect-controllers="hand:right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:"
                     sphere-collider="objects: .Items,.notItems " static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
+
             </a-entity>
 
 
@@ -116,8 +117,6 @@
             <a-entity gltf-model="#milk" grabbable id="item4" dynamic-body class="Items" color="red" visible="true" position="-1.9 0.62 -5.73918" product-collector> </a-entity>
             <a-entity gltf-model="#biscuits" grabbable id="item5" dynamic-body class="Items" color="red" visible="true" position="1.7 0.72 -10.25" rotation="0 -90 0" product-collector> </a-entity>
             <a-entity gltf-model="#cheese" grabbable id="item6" dynamic-body class="Items" color="red" visible="true" position="-1.7 0.5 -9" product-collector> </a-entity>
-            <a-entity gltf-model="#cheese" grabbable id="it" dynamic-body class="Items" color="red" visible="true" position="0.2 1 -4"> </a-entity>
-            <a-entity gltf-model="#cheese" grabbable id="it2" dynamic-body class="Items" color="red" visible="true" position="0.2 1 -0.2"> </a-entity>
 
             <a-gltf-model id="trolly" product src="#cart" position="0.2 0.10 -4" rotation="0 -180 0" aabb-collider="objects: .Items,.notItems">
 
