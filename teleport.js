@@ -161,10 +161,11 @@ AFRAME.registerComponent('blink-teleportation', {
                 });
             });*/
         const sceneEl = this.el.sceneEl
-
+        const canvasEl = sceneEl.canvas
         var el = this.el
         let pos = el.object3D.position;
         let camRig = document.querySelector('#camRig');
+        var cart = document.getElementById('trolly');
 
         document.querySelector('a-scene').addEventListener('enter-vr', function() {
 
@@ -183,11 +184,11 @@ AFRAME.registerComponent('blink-teleportation', {
             })
 
             hands.forEach(hand => {
-                console.log(hand);
                 if (hand.parentElement.id != 'camRig') {
                     // camRig.replaceChild()
                     //  hand.setAttribute('visible', "false");
-
+                    console.log(hand);
+                    //  hand.parentNode.removeChild(hand);
                 }
 
             })
@@ -195,10 +196,13 @@ AFRAME.registerComponent('blink-teleportation', {
 
 
 
-        el.addEventListener('click', function() {
+        this.el.addEventListener('click', function() {
 
 
             camRig.setAttribute('position', "" + pos.x + " 0 " + pos.z);
+            cart.object3D.position.x = pos.x;
+            cart.object3D.position.z = (pos.z - 1);
+            document.getElementById("hand").setAttribute('position', "" + pos.x + " 0 " + pos.z);
 
         })
     }

@@ -48,7 +48,8 @@
     </div>
     <div id="game" style="visibility: hidden;">
 
-        <a-scene physics effects="bloom, fxaa, ssao, godrays" bloom="radius: 0.66" fxaa godrays="src: #sun; threshold: 0. 0.33; intensity: 2;tint:#FF0000" ssao="intensity:10;scale:.2;maxDepth:10;samples:64;radius:1;depthCutoff:100;blurRadius:10" renderer="antialias: true;
+        <a-scene physics="iterations: 40" effects="bloom, fxaa, ssao, godrays" bloom="radius: 0.66" fxaa godrays="src: #sun; threshold: 0. 0.33; intensity: 2;tint:#FF0000" ssao="intensity:10;scale:.2;maxDepth:10;samples:64;radius:1;depthCutoff:100;blurRadius:10"
+            renderer="antialias: true;
     sortObjects: true;
     maxCanvasWidth: 1920;
     maxCanvasHeight: 1920;
@@ -81,6 +82,12 @@
             <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
             <!--- superhands---------------------------------------->
             <a-entity progressive-controls="objects: [grabbable], [hoverable]"></a-entity>
+            <a-entity id="hand">
+                <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
+                <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands></a-entity>
+                <a-entity id="righthand" grab auto-detect-controllers="hand:right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:"
+                    sphere-collider="objects: .Items,.notItems " static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
+            </a-entity>
             <!----------------------------------------------------------------------->
             <a-entity id="camRig">
                 <a-camera id="cam" wasd-controls-enabled="false">
@@ -90,10 +97,6 @@
 
                 </a-camera>
 
-                <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
-                <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands></a-entity>
-                <a-entity id="righthand" grab auto-detect-controllers="hand:right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:"
-                    sphere-collider="objects: .Items,.notItems " static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
 
             </a-entity>
 
