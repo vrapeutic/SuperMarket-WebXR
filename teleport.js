@@ -186,7 +186,7 @@ AFRAME.registerComponent('blink-teleportation', {
             hands.forEach(hand => {
                 if (hand.parentElement.id != 'camRig') {
                     // camRig.replaceChild()
-                    //  hand.setAttribute('visible', "false");
+                    hand.setAttribute('visible', "false");
                     console.log(hand);
                     //  hand.parentNode.removeChild(hand);
                 }
@@ -202,7 +202,7 @@ AFRAME.registerComponent('blink-teleportation', {
             camRig.setAttribute('position', "" + pos.x + " 0 " + pos.z);
             cart.object3D.position.x = pos.x;
             cart.object3D.position.z = (pos.z - 1);
-            document.getElementById("hand").setAttribute('position', "" + pos.x + " 0 " + pos.z);
+            //   document.getElementById("hand").setAttribute('position', "" + pos.x + " 0 " + pos.z);
 
         })
     }

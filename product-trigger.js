@@ -75,6 +75,15 @@ AFRAME.registerComponent('product-collector', {
             }, 2000);
 
         })
+        el.addEventListener("grab", function() {
+            var newel = el.cloneNode(true);
+            el.parentNode.replaceChild(newel, el);
+            document.getElementById("lefthand").appendChild(newel);
+            newel.setAttribute("position", ".5  1.2 -.8");
+            console.log("emit" + newel.parentElement.id);
+
+
+        })
 
     }
 

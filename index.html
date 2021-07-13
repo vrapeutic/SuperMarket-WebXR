@@ -29,6 +29,7 @@
     <script src="index.js"></script>
     <script src="timer.js"></script>
     <script src="teleport.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -66,7 +67,7 @@
                 <a-asset-item id="pizza" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_pizza_cheese_v1.01.glb?v=1622983124706"></a-asset-item>
                 <a-asset-item id="ice" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_icecream_v1.01.glb?v=1622983125714"></a-asset-item>
                 <a-asset-item id="cereals" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cereals_v1.01.glb?v=1622983126227"></a-asset-item>
-                <a-asset-item id="cheese" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cheese_v1.02.glb?v=1623602758606"></a-asset-item>
+                <a-asset-item id="cheese" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_cheese_v1.02.glb?v=1623602758606" response-type="arraybuffer"></a-asset-item>
                 <a-asset-item id="biscuits" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_biscuits_v1.02.glb?v=1623602757706"></a-asset-item>
                 <a-asset-item id="meat" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_meat_raw_v1.01.glb?v=1622983129306"></a-asset-item>
                 <a-asset-item id="orange" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FSM_Prop_juice_orange_v1.01.glb?v=1622983129585"></a-asset-item>
@@ -82,12 +83,7 @@
             <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
             <!--- superhands---------------------------------------->
             <a-entity progressive-controls="objects: [grabbable], [hoverable]"></a-entity>
-            <a-entity id="hand">
-                <a-entity laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100"></a-entity>
-                <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands></a-entity>
-                <a-entity id="righthand" grab auto-detect-controllers="hand:right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100" super-hands="colliderEvent: raycaster-intersection; colliderEventProperty: els; colliderEndEvent: raycaster-intersection-cleared; colliderEndEventProperty: clearedEls; colliderState:"
-                    sphere-collider="objects: .Items,.notItems " static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
-            </a-entity>
+
             <!----------------------------------------------------------------------->
             <a-entity id="camRig">
                 <a-camera id="cam" wasd-controls-enabled="false">
@@ -97,8 +93,13 @@
 
                 </a-camera>
 
+                <a-entity dragndrop laser-controls="hand: right" raycaster="objects: .Items,.notItems,.clickable,#trolly; far: 100" product-collector></a-entity>
+                <a-entity id="lefthand" auto-detect-controllers="hand:left" super-hands>
+                    <a-entity id="laser"></a-entity>
+                </a-entity>
+                <a-entity id="righthand" grab auto-detect-controllers="hand:right">
 
-            </a-entity>
+                </a-entity>
 
 
 
@@ -106,7 +107,7 @@
 
 
 
-            <!-- super hands controls   
+                <!-- super hands controls   
            <a-entity hand-controls="hand: left" grabb  class = "hand"></a-entity>
       <a-entity hand-controls="hand: right" grabb class = "hand"></a-entity> <a-entity quest-controls="hand: left" grab class="hand"></a-entity>
             <a-entity quest-controls="hand: right" grab class="hand"></a-entity>
@@ -114,36 +115,37 @@
 
 
 
-            <a-entity gltf-model="#butter" grabbable id="item1" dynamic-body class="Items" color="red" visible="true" position="-1.955 0.62 -4.4257" product-collector> </a-entity>
-            <a-entity gltf-model="#egg" grabbable id="item2" dynamic-body class="Items" color="red" visible="true" position="-1.96192 1.4 -5.75553" product-collector> </a-entity>
-            <a-entity gltf-model="#bread2" grabbable id="item3" dynamic-body class="Items" color="red" visible="true" position="-1.6 0.4 -8.5" product-collector> </a-entity>
-            <a-entity gltf-model="#milk" grabbable id="item4" dynamic-body class="Items" color="red" visible="true" position="-1.9 0.62 -5.73918" product-collector> </a-entity>
-            <a-entity gltf-model="#biscuits" grabbable id="item5" dynamic-body class="Items" color="red" visible="true" position="1.7 0.72 -10.25" rotation="0 -90 0" product-collector> </a-entity>
-            <a-entity gltf-model="#cheese" grabbable id="item6" dynamic-body class="Items" color="red" visible="true" position="-1.7 0.5 -9" product-collector> </a-entity>
+                <a-entity gltf-model="#butter" grabbable id="item1" dynamic-body class="Items" color="red" visible="true" position="-1.955 0.62 -4.4257" product-collector> </a-entity>
+                <a-entity gltf-model="#egg" grabbable id="item2" dynamic-body class="Items" color="red" visible="true" position="-1.96192 1.4 -5.75553" product-collector> </a-entity>
+                <a-entity gltf-model="#bread2" grabbable id="item3" dynamic-body class="Items" color="red" visible="true" position="-1.6 0.4 -8.5" product-collector> </a-entity>
+                <a-entity gltf-model="#milk" grabbable id="item4" dynamic-body class="Items" color="red" visible="true" position="-1.9 0.62 -5.73918" product-collector> </a-entity>
+                <a-entity gltf-model="#biscuits" grabbable id="item5" dynamic-body class="Items" color="red" visible="true" position="1.7 0.72 -10.25" rotation="0 -90 0" product-collector> </a-entity>
+                <a-entity gltf-model="#cheese" grabbable id="item6" dynamic-body class="Items" color="red" visible="true" position="-1.7 0.5 -9" product-collector> </a-sphere>
+                    <a-sphere id="item7" class="Items" color="red" visible="true" position="-.7 0.5 -2" product-collector> </a-entity>
 
-            <a-gltf-model id="trolly" product src="#cart" position="0.2 0.10 -4" rotation="0 -180 0" aabb-collider="objects: .Items,.notItems">
+                <a-gltf-model id="trolly" product src="#cart" position="0.2 0.10 -4" rotation="0 -180 0" aabb-collider="objects: .Items,.notItems">
 
-                <a-box id="collider" scale="0.5 0.5 1" position="0 .8 0.2 " aabb-collider="objects: .Items,.notItems" material="opacity: 0.01" geometry="">
+                    <a-box id="collider" scale="0.5 0.5 1" position="0 .8 0.2 " aabb-collider="objects: .Items,.notItems" material="opacity: 0.01" geometry="">
 
-                </a-box>
-            </a-gltf-model>
-            <a-plane position="0 0 0" rotation="-90 0 0" material="opacity: 0.1" width="4" height="4" color="#7BC8A4" static-body scale="10 10 10"></a-plane>
-            <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="5 100 1" position="-2.07155 0.67 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
-            <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 1.2 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity:0"></a-entity>
-            <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 0.2 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
-            <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="2.07155 0.7 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
+                    </a-box>
+                </a-gltf-model>
+                <a-plane position="0 0 0" rotation="-90 0 0" material="opacity: 0.1" width="4" height="4" color="#7BC8A4" static-body scale="10 10 10"></a-plane>
+                <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="5 100 1" position="-2.07155 0.67 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
+                <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 1.2 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity:0"></a-entity>
+                <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="-2.07155 0.2 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
+                <a-entity geometry="primitive: plane" rotation="-85.48415711792858 -93.57088343840499 -86.4404236780019" scale="1.2 10 1" position="2.07155 0.7 -7.41144" velocity="" static-body="sphereRadius: NaN" material="opacity: 0"></a-entity>
 
-            <a-gltf-model src="#environment" position="0 0.005 10"></a-gltf-model>
+                <a-gltf-model src="#environment" position="0 0.005 10"></a-gltf-model>
 
 
-            <!-----   <a-entity id="box1" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5" position="-1 2 -8.48203" visible="true"  class="clickable" blink-teleportation="pos: -1 1 -8.48203; hide: true"
+                <!-----   <a-entity id="box1" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5" position="-1 2 -8.48203" visible="true"  class="clickable" blink-teleportation="pos: -1 1 -8.48203; hide: true"
     
     ></a-entity>-----telepirt target path-->
 
-            <a-entity id="box2" gltf-model="#arrow" animation-mixer rotation="90 -180 0" scale="0.5 0.5 0.5" position="0.56386 2 -9.66149" visible="true" class="clickable" blink-teleportation="pos: 0.56386 0 -9.66149; hide: true"></a-entity>
-            <a-entity id="box1" gltf-model="#arrow" animation-mixer rotation="90 -180 0" scale="0.5 0.5 0.5" position="0.56386 2 -4.66149" visible="true" class="clickable" blink-teleportation="pos: 0.56386 0 -4.66149; hide: true"></a-entity>
+                <a-entity id="box2" gltf-model="#arrow" animation-mixer rotation="90 -180 0" scale="0.5 0.5 0.5" position="0.56386 2 -9.66149" visible="true" class="clickable" blink-teleportation="pos: 0.56386 0 -9.66149; hide: true"></a-entity>
+                <a-entity id="box1" gltf-model="#arrow" animation-mixer rotation="90 -180 0" scale="0.5 0.5 0.5" position="0.56386 2 -4.66149" visible="true" class="clickable" blink-teleportation="pos: 0.56386 0 -4.66149; hide: true"></a-entity>
 
-            <!--    <a-entity id="box3" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5"  position="1 2 -5.73918" visible="true"  class="clickable" blink-teleportation="pos:1 1 -5.73918; hide: true"
+                <!--    <a-entity id="box3" gltf-model="#arrow" animation-mixer  rotation = "90 -180 0" scale="0.5 0.5 0.5"  position="1 2 -5.73918" visible="true"  class="clickable" blink-teleportation="pos:1 1 -5.73918; hide: true"
     
     ></a-entity>  
 
@@ -153,7 +155,7 @@
       <a-entity id="box" gltf-model="#arrow" animation-mixer rotation = "90 -180 0"  scale="0.5 0.5 0.5"  position="-3.08328 2 -3.41235"  visible="true"  class="clickable" blink-teleportation="pos: -3.08328 2 -3.41235; hide: true " ></a-entity>   
         <a-gltf-model id="butterflymodel" moverandomly src="#butterfly" position="0 3 -1" scale="5 5 5" animation-mixer></a-gltf-model>
 -->
-            <a-text id="counter" value="0" geometry="primitive:plane" visible="false"></a-text>
+                <a-text id="counter" value="0" geometry="primitive:plane" visible="false"></a-text>
 
         </a-scene>
 
