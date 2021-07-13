@@ -40,9 +40,8 @@ AFRAME.registerComponent("dragndrop", {
                 element.addEventListener("click", () => {
                     console.log(el.parentElement);
                     //  document.getElementById("item1").appendChild(element);
-                    if (document.getElementById("laser").firstElementChild == null) {
-                        element.emit('grab')
-                    }
+                    element.emit('correctCollect')
+
                 })
             }
         })

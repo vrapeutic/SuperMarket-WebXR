@@ -49,7 +49,7 @@ AFRAME.registerComponent('product-collector', {
             items++;
             console.log(items);
 
-            if (items >= correctProduct) {
+            if (correctProduct < 2) {
                 document.querySelector('#EndTxt').setAttribute('value', 'You Win');
                 setTimeout(() => {
                     location.reload();
@@ -70,7 +70,7 @@ AFRAME.registerComponent('product-collector', {
                 var new_element = el.cloneNode(true);
                 el.parentNode.replaceChild(new_element, el);
                 document.getElementById('trolly').firstElementChild.appendChild(new_element);
-                new_element.setAttribute("position", { x: window.x, y: 0, z: 0.2 });
+                new_element.setAttribute("position", { x: window.x, y: 0, z: window.z });
 
             }, 2000);
 
