@@ -47,10 +47,10 @@ AFRAME.registerComponent('product-collector', {
                 document.getElementById(new_element.id).className = "trolly"
             }, 1000);
             items++;
-            correctProduct.length--;
-            console.log(correctProduct.length);
+            document.querySelectorAll(".Items").length--;
+            console.log(document.querySelectorAll(".Items").length);
 
-            if (correctProduct.length < 1) {
+            if (document.querySelectorAll(".Items").length < 2) {
                 document.querySelector('#EndTxt').setAttribute('value', 'You Win');
                 setTimeout(() => {
                     location.reload();
