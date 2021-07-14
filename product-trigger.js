@@ -2,9 +2,9 @@ window.correctProducts = 0;
 window.wrongProducts = 0;
 const ADD_VALUE = 0.1;
 
-window.x = -0.1;
+window.x = -0.2;
 window.y = 0;
-window.z = 0.1;
+window.z = -0.4;
 AFRAME.registerComponent('product-collector', {
     schema: {
         myType: { type: 'string', default: 'correct' }
@@ -20,6 +20,8 @@ AFRAME.registerComponent('product-collector', {
         el.addEventListener("correctCollect", function() {
             // hlioynntrgnfl correctProduct=document.querySelectorAll('.newItems');  
             console.log('corrrect product' + el);
+            el.setAttribute("animation", "property: scale; to:2 2 2; dur:2000; easing: linear; loop: false");
+            el.className = "trolly"
 
             // el.setAttribute('material','color','blue');
             //  el.setAttribute('static-body', 'enabled:true');
@@ -38,13 +40,17 @@ AFRAME.registerComponent('product-collector', {
                 else if (window.x < 0.2 && window.z <= 0.3)
                     window.z = window.z + 0.2;
                 //else window.z=window.z+0.1;
-                else if (window.z >= 0.5)
+                else if (window.z >= 0.3) {
                     window.x = window.x + 0.1;
+                    window.z = 0.1;
+                }
+                setTimeout(() => {
 
-                new_element.setAttribute("position", "" + window.x + " 0.6 " + window.z);
+                    new_element.setAttribute("position", "" + window.x + " 0.6 " + window.z);
+                    new_element.setAttribute("scale", "1 1 1");
 
-                document.getElementById('trolly').appendChild(new_element);
-                document.getElementById(new_element.id).className = "trolly"
+                    document.getElementById('trolly').appendChild(new_element);
+                }, 1000);
             }, 1000);
             items++;
             document.querySelectorAll(".Items").length--;
