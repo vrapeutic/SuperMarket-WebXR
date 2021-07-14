@@ -2,7 +2,7 @@ window.correctProducts = 0;
 window.wrongProducts = 0;
 const ADD_VALUE = 0.1;
 
-window.x = 0.1;
+window.x = -0.1;
 window.y = 0;
 window.z = 0.1;
 AFRAME.registerComponent('product-collector', {
@@ -22,34 +22,35 @@ AFRAME.registerComponent('product-collector', {
             console.log('corrrect product' + el);
 
             // el.setAttribute('material','color','blue');
-            el.setAttribute('static-body', 'enabled:true');
+            //  el.setAttribute('static-body', 'enabled:true');
             setTimeout(() => {
                 var new_element = el.cloneNode(true);
-                el.parentNode.replaceChild(new_element, el);
-                console.log(window.z + "" + el.object3D.position.z);
+                el.parentNode.removeChild(el);
+                console.log(window.z);
                 //new_element.object3D.position.z=0;
                 //new_element.object3D.position.y=0;
                 //window.x=(el.object3D.position.x- document.getElementById('trolly').getAttribute("position").x)-1;
                 //window.z=el.object3D.position.z+ document.getElementById('trolly').getAttribute("position").z;
                 //window.y=el.object3D.position.y- document.getElementById('trolly').getAttribute("position").y;
-                console.log(window.z + "" + el.object3D.position.z);
+                console.log(window.z);
                 if (window.x >= 0.2)
                     window.x = window.x - 0.1;
-                else if (window.x < 0.2 && window.z <= 0.7)
+                else if (window.x < 0.2 && window.z <= 0.3)
                     window.z = window.z + 0.2;
                 //else window.z=window.z+0.1;
-                else if (window.z >= 0.7)
+                else if (window.z >= 0.5)
                     window.x = window.x + 0.1;
 
                 new_element.setAttribute("position", "" + window.x + " 0.6 " + window.z);
 
                 document.getElementById('trolly').appendChild(new_element);
-
+                document.getElementById(new_element.id).className = "trolly"
             }, 1000);
             items++;
-            console.log(items);
+            correctProduct.length--;
+            console.log(correctProduct.length);
 
-            if (correctProduct < 2) {
+            if (correctProduct.length < 1) {
                 document.querySelector('#EndTxt').setAttribute('value', 'You Win');
                 setTimeout(() => {
                     location.reload();

@@ -31,71 +31,71 @@ AFRAME.registerComponent('product', {
             }, 2000);
         })
         document.getElementById("trolly").addEventListener("click", () => {
-            //var cartPos=el.object3D.position;  
-            var cartRot = document.querySelector('a-camera').object3D.rotation
-            console.log("pressed" + cartRot.x);
-            //el.setAttribute('rotation',"0 0 0");
-            //el.setAttribute('rotation',cartRot);
-            // create a direction vector
-            var direction = new THREE.Vector3();
-            // get the cameras world direction
-            this.el.sceneEl.camera.getWorldDirection(direction);
-            // multiply the direction by a "speed" factor
-            //  direction.multiplyScalar(0.1)
-            // get the current position
-            var pos = el.getAttribute("position");
-            // add the direction vector0
-            // pos.add(direction)
-            // set the new position
-            // player.setAttribute("position", pos); 
-            pos.z--;
+                //var cartPos=el.object3D.position;  
+                var cartRot = document.querySelector('a-camera').object3D.rotation
+                console.log("pressed" + cartRot.x);
+                //el.setAttribute('rotation',"0 0 0");
+                //el.setAttribute('rotation',cartRot);
+                // create a direction vector
+                var direction = new THREE.Vector3();
+                // get the cameras world direction
+                this.el.sceneEl.camera.getWorldDirection(direction);
+                // multiply the direction by a "speed" factor
+                //  direction.multiplyScalar(0.1)
+                // get the current position
+                var pos = el.getAttribute("position");
+                // add the direction vector0
+                // pos.add(direction)
+                // set the new position
+                // player.setAttribute("position", pos); 
+                pos.z--;
 
-            el.setAttribute('animation', "property:position; to:" + pos.x + "" + pos.y + "" + pos.z + "delay:5000 ;dur:8000");
-            //el.firstElementChild.setAttribute('animation',"property:position; to:"+0+""+.8+""+0+"delay:5000 ;dur:8000"); 
-            el.setAttribute('animation-mixer', "clampWhenFinished:  true;  loop:  false;  repetitions:  0");
-            //el.firstElementChild.object3D.posittion.z--;
-            setTimeout(() => {
-                el.removeAttribute('animation-mixer');
+                el.setAttribute('animation', "property:position; to:" + pos.x + "" + pos.y + "" + pos.z + "delay:5000 ;dur:8000");
+                //el.firstElementChild.setAttribute('animation',"property:position; to:"+0+""+.8+""+0+"delay:5000 ;dur:8000"); 
+                el.setAttribute('animation-mixer', "clampWhenFinished:  true;  loop:  false;  repetitions:  0");
+                //el.firstElementChild.object3D.posittion.z--;
+                setTimeout(() => {
+                    el.removeAttribute('animation-mixer');
 
-            }, 1000);
-        })
-        el.firstElementChild.addEventListener("hitstart", e => {
-                console.log(e.target.id,
-                    "collided ",
-                    e.target.components["aabb-collider"]["intersectedEls"].map(x => x.id)[0]
-                );
-                product = document.getElementById(e.target.components["aabb-collider"]["intersectedEls"].map(x => x.id)[0])
-                if (product.className == "Items" || product.className == "notItems")
-                    setTimeout(() => {
-                        product.setAttribute("position", document.getElementById("cam").getAttribute('position'));
+                }, 1000);
+            })
+            /* el.firstElementChild.addEventListener("hitstart", e => {
+                     console.log(e.target.id,
+                         "collided ",
+                         e.target.components["aabb-collider"]["intersectedEls"].map(x => x.id)[0]
+                     );
+                     product = document.getElementById(e.target.components["aabb-collider"]["intersectedEls"].map(x => x.id)[0])
+                     if (product.className == "Items" || product.className == "notItems")
+                         setTimeout(() => {
+                             product.setAttribute("position", document.getElementById("cam").getAttribute('position'));
 
-                        product.removeAttribute('dynamic-body');
+                             product.removeAttribute('dynamic-body');
 
-                    }, 10);
-                if (product.className == "Items")
-                    product.className = "newItems";
-                else
-                    product.className = "notNewItems";
+                         }, 10);
+                     if (product.className == "Items")
+                         product.className = "newItems";
+                     else
+                         product.className = "notNewItems";
 
 
-                //product.setAttribute('position',document.getElementById("trolly").getAttirbute('position'));
+                     //product.setAttribute('position',document.getElementById("trolly").getAttirbute('position'));
 
-                //el.parentElement.appendChild(document.getElementById(e.target.id))
-                if (product.className != "newItems") {
-                    console.log(product);
-                    product.emit('wrongCollect');
-                    el.firstElementChild.emit('wrong');
-                } else {
-                    console.log(product);
+                     //el.parentElement.appendChild(document.getElementById(e.target.id))
+                     if (product.className != "newItems") {
+                         console.log(product);
+                         product.emit('wrongCollect');
+                         el.firstElementChild.emit('wrong');
+                     } else {
+                         console.log(product);
 
-                    product.emit('correctCollect');
+                         product.emit('correctCollect');
 
-                    el.firstElementChild.emit('correct');
+                         el.firstElementChild.emit('correct');
 
-                }
-            }
+                     }
+                 }
 
-        );
+             );*/
 
     }
 
